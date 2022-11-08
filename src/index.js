@@ -4,7 +4,7 @@ const { Routes } = require('discord-api-types/v10');
 const { token, clientId, guildId } = require('../config.json');
 const axios = require('axios');
 const Database = require('better-sqlite3');
-const { GatewayIntentBits } = require('./config/GatewayIntentBits.js');
+const GatewayIntentBits = require('./config/GatewayIntentBits.js');
 
 // Create a new client instance
 //const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -70,7 +70,7 @@ async function getXRPToken() {
 // When the client is ready, run this code (only once)
 // We use 'c' for the event parameter to keep it separate from the already defined 'client'
 client.on(Events.ClientReady, c => {
-    console.log(GatewayIntentsBit.GatewayIntentsBits);
+    console.log(GatewayIntentsBits);
 	console.log(`Ready! Logged in as ${c.user.tag}`);
     const command = [ping, beep, xrplToken];
     //console.log(command);
