@@ -1,7 +1,7 @@
 const { Client, Events, GatewayIntentBits, SlashCommandBuilder } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
-const { token, clientId, guildId } = require('./config.json');
+const { token, clientId, guildId } = require('../config.json');
 const { IntentOptions } = require('./config/IntentsOptions.js');
 
 // Create a new client instance
