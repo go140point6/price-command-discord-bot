@@ -1,4 +1,4 @@
-const { IntentsString } = require('discord.js');
+const { GatewayIntentBits } = require('discord.js');
 
-exports.IntentOptions = void 0;
-exports.IntentOptions = [GatewayIntentBits.Guilds];
+exports.GatewayIntentBits = void 0;
+exports.GatewayIntentBits = [GatewayIntentBits.Guilds];
