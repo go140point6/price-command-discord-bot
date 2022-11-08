@@ -6,7 +6,7 @@ const { IntentOptions } = require('./config/IntentOptions.js');
 
 // Create a new client instance
 //const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-const client = new Client({ intents: IntentOptions });
+const client = new Client({ intents: GatewayIntentBits });
 
 const ping = {
     data: new SlashCommandBuilder()
