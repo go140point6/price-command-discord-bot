@@ -13,9 +13,65 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 
     const client = new Client({ intents: GatewayIntentBits });
 
+    client.on(Events.ClientReady, c => {
+        console.log(`Ready! Logged in as ${c.user.tag}`);
+        const command = [ping, beep, xrplToken];
+        //console.log(command);
+    
+        const commandData = command.map((command) => command.data.toJSON());
+        //console.log(commandData);
+    
+        const rest = new REST({ version: '10' }).setToken(token);
+        
+        rest.put(
+            Routes.applicationGuildCommands(
+                clientId, 
+                guildId
+            ), 
+            { body: commandData }
+            ).then(data => console.log(`Successfully registered ${data.length} application commands.`))
+            .catch(console.error);
+        }); 
+    
+        getXRPToken();
+        setInterval(getXRPToken, Math.max(1, 5 || 1) * 60 * 1000);
+
+    client.on(Events.InteractionCreate, async interaction => {
+        if (!interaction.isChatInputCommand()) return;
+        
+        const { commandName } = interaction;
+        
+        if (commandName === 'xrpl-token') {
+        await interaction.deferReply();
+        const ticker = (interaction.options.getString("ticker", true)).toUpperCase();
+        const stmt5 = db.prepare('SELECT currency, issuer FROM tokens WHERE currency = ? COLLATE NOCASE');
+        var results5 = stmt5.all(ticker);
+        console.log("Current XRP price is $" + currentXRP);
+        console.log("Number in array for " + ticker + " is " + results5.length);
+        
+        if (Array.isArray(results5) && results5.length == 1) {
+        
+                    let currency = results5[0].currency;
+                    let issuer = results5[0].issuer;
+                    await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
+                        if(res.data && res.data.pairs[0].last) {
+                            const inXRP = res.data.pairs[0].last;
+                            inUSD = (inXRP * currentXRP).toFixed(6);
+                            interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+                        }
+                    }).catch(err => {
+                        interaction.editReply({ content: `Some error with api call, please try again or ping an admin.`});
+                    });
+                } else if (Array.isArray(results5) && results5.length > 1) {
+                    interaction.editReply({ content: `Found more than one ${ticker} in database and the meatbag didn't program me for that yet.` });
+                } else {
+                    interaction.editReply({ content: `Sorry, the meatbag didn't program me for ${ticker}, please ask him to update the database.` });
+                }
+            }
+        });
+
     await client.login(process.env.BOT_TOKEN);
 })
-
 
 const db = new Database('./data/tokens.db');
 
@@ -76,7 +132,7 @@ async function getXRPToken() {
 
 // When the client is ready, run this code (only once)
 // We use 'c' for the event parameter to keep it separate from the already defined 'client'
-client.on(Events.ClientReady, c => {
+/* client.on(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
     const command = [ping, beep, xrplToken];
     //console.log(command);
@@ -97,9 +153,9 @@ client.on(Events.ClientReady, c => {
     }); 
 
     getXRPToken()
-    setInterval(getXRPToken, Math.max(1, 5 || 1) * 60 * 1000);
+    setInterval(getXRPToken, Math.max(1, 5 || 1) * 60 * 1000); */
 
-client.on(Events.InteractionCreate, async interaction => {
+/* client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
 	const { commandName } = interaction;
@@ -167,6 +223,6 @@ client.on(Events.InteractionCreate, async interaction => {
             interaction.editReply({ content: `Sorry, the meatbag didn't program me for ${ticker}, please ask him to update the database.` });
         }
     }
-});
+}); */
 
 // Log in to Discord with your client's token
