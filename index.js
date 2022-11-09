@@ -6,11 +6,12 @@ const { Routes } = require('discord-api-types/v10');
 const axios = require('axios');
 const Database = require('better-sqlite3');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
+const { validateEnv } = require('./utils/validateEnv');
 
 //console.log(process.env.BOT_TOKEN);
 
 (async () => {
-    //validateEnv();
+    validateEnv();
 
     const client = new Client({ intents: GatewayIntentBits });
 
