@@ -8,7 +8,7 @@ const axios = require('axios');
 const Database = require('better-sqlite3');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 
-console.log("hello");
+console.log(process.env.BOT_TOKEN);
 
 /*
 (async () => {
