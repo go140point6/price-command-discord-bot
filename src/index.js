@@ -8,6 +8,9 @@ const axios = require('axios');
 const Database = require('better-sqlite3');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 
+console.log("hello");
+
+/*
 (async () => {
     //validateEnv();
 
@@ -73,7 +76,7 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
                 }
             }
         });
-*/
+
     await client.login(process.env.BOT_TOKEN);
 })();
 
