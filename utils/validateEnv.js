@@ -1,6 +1,6 @@
 var validateEnv = function () {
     if (!process.env.BOT_TOKEN) {
-        logHandler.log("warn", "Missing Discord bot token.");
+        console.warn("Missing Discord bot token.");
         process.exit(1);
     }
 };
