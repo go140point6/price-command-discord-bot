@@ -1,10 +1,10 @@
-const { Client, Events, GatewayIntentBits, SlashCommandBuilder } = require('discord.js');
+const { Client, Events, SlashCommandBuilder } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { token, clientId, guildId } = require('../config.json');
 const axios = require('axios');
 const Database = require('better-sqlite3');
-//const { GatewayIntentBits } = require('./config/GatewayIntentBits.js');
+const { GatewayIntentBits } = require('./config/GatewayIntentBits.js');
 
 // Create a new client instance
 //const client = new Client({ intents: [GatewayIntentBits.Guilds] });
