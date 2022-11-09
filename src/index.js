@@ -1,16 +1,21 @@
+require('dotenv').config();
+require('log-timestamp');
 const { Client, Events, SlashCommandBuilder } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
-const { token, clientId, guildId } = require('../config.json');
+//const { token, clientId, guildId } = require('../config.json');
 const axios = require('axios');
 const Database = require('better-sqlite3');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 
-// Create a new client instance
-//const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-//const client = new Client({ intents: GatewayIntentBits });
-const client = new Client({ intents: GatewayIntentBits });
-//const client = new Client({ intents: GatewayIntentBits.Guilds });
+(async () => {
+    //validateEnv();
+
+    const client = new Client({ intents: GatewayIntentBits });
+
+    await client.login(process.env.BOT_TOKEN);
+})
+
 
 const db = new Database('./data/tokens.db');
 
@@ -72,7 +77,6 @@ async function getXRPToken() {
 // When the client is ready, run this code (only once)
 // We use 'c' for the event parameter to keep it separate from the already defined 'client'
 client.on(Events.ClientReady, c => {
-    console.log(GatewayIntentBits);
 	console.log(`Ready! Logged in as ${c.user.tag}`);
     const command = [ping, beep, xrplToken];
     //console.log(command);
@@ -166,4 +170,3 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 // Log in to Discord with your client's token
-client.login(token);
