@@ -8,7 +8,8 @@ const { intents } = require('./config/GatewayIntentBits');
 
 // Create a new client instance
 //const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-const client = new Client({ intents: [GatewayIntentBits] });
+//const client = new Client({ intents: GatewayIntentBits });
+const client = new Client({ intents: intents})
 //const client = new Client({ intents: GatewayIntentBits.Guilds });
 
 const db = new Database('./data/tokens.db');
