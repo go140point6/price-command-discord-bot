@@ -71,7 +71,7 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
         });
 
     await client.login(process.env.BOT_TOKEN);
-})
+})();
 
 const db = new Database('./data/tokens.db');
 
