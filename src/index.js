@@ -1,4 +1,4 @@
-require('dotenv');
+require('dotenv').config();
 require('log-timestamp');
 const { Client, Events, SlashCommandBuilder } = require('discord.js');
 const { REST } = require('@discordjs/rest');
@@ -8,7 +8,7 @@ const axios = require('axios');
 const Database = require('better-sqlite3');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 
-console.log(process.env.BOT_TOKEN);
+console.log(process.env);
 
 /*
 (async () => {
