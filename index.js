@@ -17,8 +17,8 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
     client.on(Events.ClientReady, c => {
         console.log(`Ready! Logged in as ${c.user.tag}`);
         //const command = [ping, beep, xrplToken];
-        //const command = [ping, beep];
-        //console.log(command);
+        const command = [ping, beep];
+        console.log(command);
     });
     
         //const commandData = command.map((command) => command.data.toJSON());
