@@ -3,14 +3,12 @@ require('log-timestamp');
 const { Client, Events, SlashCommandBuilder } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
-//const { token, clientId, guildId } = require('../config.json');
 const axios = require('axios');
 const Database = require('better-sqlite3');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 
-console.log(process.env.BOT_TOKEN);
+//console.log(process.env.BOT_TOKEN);
 
-/*
 (async () => {
     //validateEnv();
 
@@ -27,7 +25,6 @@ console.log(process.env.BOT_TOKEN);
         //console.log(commandData);
     
         //const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
-        
         /*
         rest.put(
             Routes.applicationGuildCommands(
@@ -42,7 +39,7 @@ console.log(process.env.BOT_TOKEN);
         getXRPToken();
         setInterval(getXRPToken, Math.max(1, 5 || 1) * 60 * 1000);
         */
-/*       
+    /*
     client.on(Events.InteractionCreate, async interaction => {
         if (!interaction.isChatInputCommand()) return;
         
@@ -76,7 +73,7 @@ console.log(process.env.BOT_TOKEN);
                 }
             }
         });
-
+        */
     await client.login(process.env.BOT_TOKEN);
 })();
 
@@ -230,6 +227,7 @@ async function getXRPToken() {
             interaction.editReply({ content: `Sorry, the meatbag didn't program me for ${ticker}, please ask him to update the database.` });
         }
     }
-}); */
+});
 
 // Log in to Discord with your client's token
+*/
