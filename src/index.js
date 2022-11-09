@@ -7,8 +7,8 @@ const Database = require('better-sqlite3');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits.js');
 
 // Create a new client instance
-//const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-const client = new Client({ intents: GatewayIntentBits });
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+//const client = new Client({ intents: GatewayIntentBits });
 //const client = new Client({ intents: GatewayIntentBits.Guilds });
 
 const db = new Database('./data/tokens.db');
