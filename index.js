@@ -19,13 +19,12 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
         const command = [ping, beep, xrplToken];
         //const command = [ping, beep];
         //console.log(command);
-    });
     
         const commandData = command.map((command) => command.data.toJSON());
         //console.log(commandData);
     
         const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
-        /*
+        
         rest.put(
             Routes.applicationGuildCommands(
                 process.env.CLIENT_ID, 
@@ -38,8 +37,7 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
         
         getXRPToken();
         setInterval(getXRPToken, Math.max(1, 5 || 1) * 60 * 1000);
-        */
-    /*
+    
     client.on(Events.InteractionCreate, async interaction => {
         if (!interaction.isChatInputCommand()) return;
         
@@ -73,7 +71,7 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
                 }
             }
         });
-        */
+
     await client.login(process.env.BOT_TOKEN);
 })();
 
