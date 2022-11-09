@@ -21,12 +21,12 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
         const commandData = command.map((command) => command.data.toJSON());
         //console.log(commandData);
     
-        const rest = new REST({ version: '10' }).setToken(token);
+        const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
         
         rest.put(
             Routes.applicationGuildCommands(
-                clientId, 
-                guildId
+                process.env.CLIENT_ID, 
+                process.env.GUILD_ID
             ), 
             { body: commandData }
             ).then(data => console.log(`Successfully registered ${data.length} application commands.`))
