@@ -1,4 +1,4 @@
-require('dotenv').config({ path: require('find-config')('.env') });
+require('dotenv').config();
 require('log-timestamp');
 const { Client, Events, SlashCommandBuilder } = require('discord.js');
 const { REST } = require('@discordjs/rest');
