@@ -9,7 +9,7 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 // Create a new client instance
 //const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 //const client = new Client({ intents: GatewayIntentBits });
-const client = new Client({ intents: GatewayIntentBits })
+const client = new Client({ intents: GatewayIntentBits });
 //const client = new Client({ intents: GatewayIntentBits.Guilds });
 
 const db = new Database('./data/tokens.db');
@@ -72,7 +72,7 @@ async function getXRPToken() {
 // When the client is ready, run this code (only once)
 // We use 'c' for the event parameter to keep it separate from the already defined 'client'
 client.on(Events.ClientReady, c => {
-    //console.log(GatewayIntentsBits);
+    console.log(GatewayIntentBits);
 	console.log(`Ready! Logged in as ${c.user.tag}`);
     const command = [ping, beep, xrplToken];
     //console.log(command);
