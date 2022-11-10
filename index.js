@@ -1,6 +1,6 @@
 require('dotenv').config();
 require('log-timestamp');
-const { Client } = require('discord.js');
+const { Client, Events } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { validateEnv } = require('./utils/validateEnv');
 
