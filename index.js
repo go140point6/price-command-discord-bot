@@ -3,6 +3,7 @@ require('log-timestamp');
 const { Client, Events } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { validateEnv } = require('./utils/validateEnv');
+const { onReady } = require('./events/onReady');
 
 (async () => {
     validateEnv();
