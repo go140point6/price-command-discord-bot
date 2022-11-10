@@ -9,7 +9,6 @@ const { onReady } = require('./events/onReady');
     validateEnv();
 
     const client = new Client({ intents: GatewayIntentBits });
-    module.exports = client;
 
     client.on('ready', async() => await onReady(client));
 
