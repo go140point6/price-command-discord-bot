@@ -7,6 +7,7 @@ const axios = require('axios');
 const Database = require('better-sqlite3');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { validateEnv } = require('./utils/validateEnv');
+const { onInteraction } = require('./events/onInteraction');
 
 //console.log(process.env.BOT_TOKEN);
 
@@ -17,6 +18,11 @@ const { validateEnv } = require('./utils/validateEnv');
 
     client.on(Events.ClientReady, c => {
         console.log(`Ready! Logged in as ${c.user.tag}`);
+
+        c.on(
+            "interactionCreate",
+            async (interaction) => await onInteraction(interaction)
+        );
     });
 
     await client.login(process.env.BOT_TOKEN);
