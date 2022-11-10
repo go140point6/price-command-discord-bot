@@ -4,7 +4,7 @@ require('log-timestamp');
 const fs = require('node:fs');
 // Node's native path utility module. path helps construct paths to access files and directories. One of the advantages of the path module is that it automatically detects the operating system and uses the appropriate joiners.
 const path = require('node:path');
-const { Client, Collection, Events} = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { validateEnv } = require('./utils/validateEnv');
 const { onInteraction } = require('./events/onInteraction');
@@ -32,20 +32,6 @@ const { onInteraction } = require('./events/onInteraction');
     }
 
     module.exports = client;
-
-    client.on(Events.ClientReady, c => {
-        console.log(`Ready! Logged in as ${c.user.tag}`);
-
-        c.on(
-            "interactionCreate",
-            async (interaction) => await onInteraction(interaction)
-        );
-    });
-
-    client.on(Events.InteractionCreate, interaction => {
-        if (!interaction.isChatInputCommand()) return;
-        console.log(interaction);
-    });
 
     await client.login(process.env.BOT_TOKEN);
 })();
