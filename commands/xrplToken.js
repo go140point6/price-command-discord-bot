@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 
-const xrplToken = {
+module.exports = {
     data: new SlashCommandBuilder()
         .setName('xrpl-token')
         .setDescription('Last trade in USD')
