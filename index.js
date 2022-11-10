@@ -9,9 +9,7 @@ const { validateEnv } = require('./utils/validateEnv');
 
     const client = new Client({ intents: GatewayIntentBits });
 
-    client.on(Events.ClientReady, client => {
-        console.log(`Ready! Logged in as ${client.user.tag}`);
-    });
-    
+    client.on('ready', async() => await onReady(client));
+
     await client.login(process.env.BOT_TOKEN);
 })();
