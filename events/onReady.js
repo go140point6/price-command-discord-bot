@@ -1,4 +1,4 @@
-const { Client, Events } = require('discord.js');
+//const { Client, Events } = require('discord.js');
 const client = require('../index');
 
 function onReady(client) {
