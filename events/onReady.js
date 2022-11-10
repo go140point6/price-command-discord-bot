@@ -1,8 +1,10 @@
-const client = require("..");
+const client = require("../index");
 const { Events } = require('discord.js');
 
-const onReady = async (client) => {
-    client.on(Events.ClientReady, client => {
-        console.log(`Ready! Logged in as ${client.user.tag}`);
-    });
-}
+module.exports = {
+    name: "onReady.js"
+};
+
+client.on(Events.ClientReady, async() => {
+    console.log(`Ready! Logged in as ${client.user.tag}`)
+});
