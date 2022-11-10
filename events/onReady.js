@@ -5,6 +5,6 @@ module.exports = {
     name: "onReady.js"
 };
 
-client.on(Events.ClientReady, async() => {
+function onReady(client) {
     console.log(`Ready! Logged in as ${client.user.tag}`)
-});
+};
