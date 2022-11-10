@@ -3,7 +3,7 @@ require('log-timestamp');
 const { Client } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { validateEnv } = require('./utils/validateEnv');
-const { onReady } = require('./events/onReady');
+//const { onReady } = require('./events/onReady');
 
 (async () => {
     validateEnv();
@@ -18,6 +18,6 @@ const { onReady } = require('./events/onReady');
     await onReady(client));
     module.exports = client;
     */
-   
+
     await client.login(process.env.BOT_TOKEN);
 })();
