@@ -11,6 +11,7 @@ const { onReady } = require('./events/onReady');
     const client = new Client({ intents: GatewayIntentBits });
 
     client.on('ready', async() => await onReady(client));
+    module.exports = client;
 
     await client.login(process.env.BOT_TOKEN);
 })();

@@ -1,4 +1,5 @@
 const { Client, Events } = require('discord.js');
+const client = require('../index');
 
 module.exports = {
     name: "onReady.js"
