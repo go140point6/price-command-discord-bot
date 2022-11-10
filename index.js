@@ -2,7 +2,7 @@ require('dotenv').config();
 require('log-timestamp');
 const { Client, Events } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
-const onReady = require('./events/onReady');
+const { onReady } = require('./events/onReady');
 const { validateEnv } = require('./utils/validateEnv');
 //const { onReady } = require('./events/onReady');
 
