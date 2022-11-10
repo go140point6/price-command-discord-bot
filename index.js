@@ -17,6 +17,19 @@ const { validateEnv } = require('./utils/validateEnv');
 
     client.on(Events.ClientReady, c => {
         console.log(`Ready! Logged in as ${c.user.tag}`);
+    });
+
+    await client.login(process.env.BOT_TOKEN);
+})();
+
+/*
+(async () => {
+    validateEnv();
+
+    const client = new Client({ intents: GatewayIntentBits });
+
+    client.on(Events.ClientReady, c => {
+        console.log(`Ready! Logged in as ${c.user.tag}`);
         const command = [ping, beep, xrplToken];
         //const command = [ping, beep];
         //console.log(command);
