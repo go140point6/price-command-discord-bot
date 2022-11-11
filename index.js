@@ -15,7 +15,7 @@ const { validateEnv } = require('./utils/validateEnv');
     const client = new Client({ intents: GatewayIntentBits });
     module.exports = client;
 
-    async function CommandInt();
+    await CommandInt()
 
     client.on(Events.ClientReady, async() => await onReady(client));
     
