@@ -1,3 +1,4 @@
+const client = require('../index');
 const { Collection } = require('discord.js');
 
 function CommandInt() {
