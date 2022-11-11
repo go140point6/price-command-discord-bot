@@ -1,7 +1,7 @@
 const client = require('../index');
 const { Collection } = require('discord.js');
 
-function CommandInt() {
+const CommandInt = function () {
     client.commands = new Collection();
 
     const commandsPath = path.join(__dirname, 'commands');
@@ -21,4 +21,4 @@ function CommandInt() {
 
 module.exports = { 
     CommandInt 
-}
+};
