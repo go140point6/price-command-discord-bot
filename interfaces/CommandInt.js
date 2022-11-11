@@ -13,7 +13,7 @@ const CommandInt = function () {
     //console.log(commandsPath);
 
     //const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-    const commandFiles = fs.readdirSync('../commands').filter(file => file.endsWith('.js'));
+    const commandFiles = fs.readdirSync('../commands/').filter(file => file.endsWith('.js'));
     console.log(commandFiles);
 
     for (const file of commandFiles) {
