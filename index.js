@@ -17,7 +17,8 @@ const { CommandInt } = require('./interfaces/CommandInt');
     module.exports = client;
 
     await CommandInt()
-    process.exit();
+
+    //process.exit();
 
     client.on(Events.ClientReady, async() => await onReady(client));
     
