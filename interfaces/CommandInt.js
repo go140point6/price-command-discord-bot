@@ -10,6 +10,8 @@ const CommandInt = function () {
 
     //const commandsPath = path.join(__dirname, 'commands');
     const commandsPath = path.join(__dirname, '..', 'commands');
+    console.log(commandsPath);
+    /*
     const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
     for (const file of commandFiles) {
@@ -21,7 +23,7 @@ const CommandInt = function () {
         } else {
             console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
         }
-    }
+    }*/
 };
 
 module.exports = { 
