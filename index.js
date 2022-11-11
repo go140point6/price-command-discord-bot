@@ -18,8 +18,6 @@ const { CommandInt } = require('./interfaces/CommandInt');
 
     await CommandInt()
 
-    //process.exit();
-
     client.on(Events.ClientReady, async() => await onReady(client));
     
     await client.login(process.env.BOT_TOKEN);
