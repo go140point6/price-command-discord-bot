@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const client = require('../index');
 const { REST, Routes } = require('discord.js');
+const { CommandInt } = require('../interfaces/CommandInt')
 
 function onReady(client) {
     console.log(`Ready! Logged in as ${client.user.tag}`)
