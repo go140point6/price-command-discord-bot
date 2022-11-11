@@ -8,7 +8,7 @@ const { Client, Collection, Events } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { onReady } = require('./events/onReady');
 const { validateEnv } = require('./utils/validateEnv');
-const { CommandInt } = require('../interfaces/CommandInt');
+const { CommandInt } = require('./interfaces/CommandInt');
 
 (async () => {
     validateEnv();
