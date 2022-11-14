@@ -72,6 +72,5 @@ async function getXRP() {
 };
 
 module.exports = { 
-    onReady,
-    currentXRP 
+    onReady
 }
