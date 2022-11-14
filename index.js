@@ -4,7 +4,7 @@ require('log-timestamp');
 const fs = require('node:fs');
 // Node's native path utility module. path helps construct paths to access files and directories. One of the advantages of the path module is that it automatically detects the operating system and uses the appropriate joiners.
 const path = require('node:path');
-const { Client, Collection, Events } = require('discord.js');
+const { Client, Events } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { onReady } = require('./events/onReady');
 const { validateEnv } = require('./utils/validateEnv');
