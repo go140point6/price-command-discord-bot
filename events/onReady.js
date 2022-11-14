@@ -76,5 +76,6 @@ async function getXRPToken() {
 }
 
 module.exports = { 
-    onReady
+    onReady,
+    currentXRP
 }
