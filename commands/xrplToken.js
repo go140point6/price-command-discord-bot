@@ -10,7 +10,5 @@ module.exports = {
                 .setDescription("Common ticker (currency) of XRPL Token to lookup i.e. CLUB.")
                 .setRequired(true)
         ),
-    async execute(interaction) {
-        await interaction.reply('589!');
-    },
+    async execute(interaction) {},
 };
