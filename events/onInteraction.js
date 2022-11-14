@@ -20,8 +20,8 @@ async function onInteraction(interaction) {
         const stmt5 = db.prepare('SELECT currency, issuer FROM tokens WHERE currency = ? COLLATE NOCASE');
         var results5 = stmt5.all(ticker);
 
-        console.log("Current XRP price is $" + XRP.currentXRP);
-        console.log("Number in array for " + ticker + " is " + results5.length);
+        //console.log("Current XRP price is $" + XRP.currentXRP);
+        //console.log("Number in array for " + ticker + " is " + results5.length);
 
         if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
@@ -31,10 +31,9 @@ async function onInteraction(interaction) {
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
                     inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                    console.log("Current XRP price: " + inXRP);
-                    console.log("Current XRP price in USD: " + XRP.currentXRP);
+                    //console.log("Current XRP price: " + inXRP);
+                    //console.log("Current XRP price in USD: " + inUSD);
                     interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    //interaction.editReply({ content: "589!"})
                 }
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping an admin.`});
