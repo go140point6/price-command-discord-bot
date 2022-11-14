@@ -36,12 +36,12 @@ async function onInteraction(interaction) {
                     interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
                 }
             }).catch(err => {
-                interaction.editReply({ content: `Some error with api call, please try again or ping an admin.`});
+                interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
             });
         } else if (Array.isArray(results5) && results5.length > 1) {
-            interaction.editReply({ content: `Found more than one ${ticker} in database and I am not fully .` });
+            interaction.editReply({ content: `Found more than one ${ticker} in database and I am not fully programmed for that yet.` });
         } else {
-            interaction.editReply({ content: `Sorry, the meatbag didn't program me for ${ticker}, please ask him to update the database.` });
+            interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
         }
     }
 };
