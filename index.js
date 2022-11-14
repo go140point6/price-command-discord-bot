@@ -18,7 +18,9 @@ const { validateEnv } = require('./utils/validateEnv');
 
     client.on(Events.ClientReady, async() => await onReady(client));
 
-    client.on(Events.InteractionCreate, async() => await onInteraction(interaction));
+    client.on(Events.InteractionCreate, interaction => { 
+        async() => await onInteraction(interaction)
+    });
     
     await client.login(process.env.BOT_TOKEN);
 })();
