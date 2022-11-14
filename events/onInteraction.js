@@ -31,6 +31,7 @@ async function onInteraction(interaction) {
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
                     inUSD = (inXRP * currentXRP).toFixed(6);
+                    console.log("Current XRP price: " + inXRP);
                     interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
                 }
             }).catch(err => {
