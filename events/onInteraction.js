@@ -20,7 +20,7 @@ async function onInteraction(interaction) {
         const stmt5 = db.prepare('SELECT currency, issuer FROM tokens WHERE currency = ? COLLATE NOCASE');
         var results5 = stmt5.all(ticker);
 
-        console.log("Current XRP price is $" + currentXRP);
+        console.log("Current XRP price is $" + getXRP.currentXRP);
         console.log("Number in array for " + ticker + " is " + results5.length);
 
         if (Array.isArray(results5) && results5.length == 1) {
@@ -30,7 +30,7 @@ async function onInteraction(interaction) {
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
-                    inUSD = (inXRP * currentXRP).toFixed(6);
+                    inUSD = (inXRP * getXRP.currentXRP).toFixed(6);
                     console.log("Current XRP price: " + inXRP);
                     interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
                 }
