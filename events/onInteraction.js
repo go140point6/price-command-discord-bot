@@ -1,5 +1,5 @@
 //const onReady = require('./onReady');
-const getXRP = require('./onReady');
+const XRP = require('./onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
 const db = new Database('./data/tokens.db');
@@ -32,7 +32,9 @@ async function onInteraction(interaction) {
                     const inXRP = res.data.pairs[0].last;
                     inUSD = (inXRP * getXRP.price).toFixed(6);
                     console.log("Current XRP price: " + inXRP);
-                    interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+                    console.log("Current XRP price in USD: " + XRP);
+                    //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+                    interaction.editReply({ content: "589!"})
                 }
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping an admin.`});
