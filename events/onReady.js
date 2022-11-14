@@ -73,9 +73,10 @@ async function getXRP() {
 
 async function getXRPToken() {
     await getXRP();
+    console.log("Under getXRP: " + currentXRP);
 }
 
 module.exports = { 
     onReady,
-    //currentXRP
+    currentXRP
 }
