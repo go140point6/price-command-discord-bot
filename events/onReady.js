@@ -45,7 +45,7 @@ function onReady(client) {
 			    { body: commands },
 		    );
 
-		    console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+		    console.log(`Successfully loaded ${data.length} application (/) commands.`);
 	    } catch (error) {
 		    // Catch and log any errors.
 		    console.error(error);
