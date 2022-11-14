@@ -8,15 +8,12 @@ const { Client, Collection, Events } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { onReady } = require('./events/onReady');
 const { validateEnv } = require('./utils/validateEnv');
-const { CommandInt } = require('./interfaces/CommandInt');
 
 (async () => {
     validateEnv();
 
     const client = new Client({ intents: GatewayIntentBits });
     module.exports = client;
-
-    await CommandInt()
 
     client.on(Events.ClientReady, async() => await onReady(client));
     
