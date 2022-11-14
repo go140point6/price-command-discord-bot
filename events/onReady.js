@@ -57,7 +57,7 @@ function onReady(client) {
     
 };
 
-module.exports = async function getXRP() {
+async function getXRP() {
     await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ripple`).then(res => {
                if (res.data && res.data[0].current_price) {
                 const currentXRP = res.data[0].current_price.toFixed(4) || 0
@@ -77,5 +77,6 @@ async function getXRPToken() {
 }
 
 module.exports = { 
-    onReady
+    onReady,
+    getXRP
 }
