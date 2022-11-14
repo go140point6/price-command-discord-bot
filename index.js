@@ -7,6 +7,7 @@ const path = require('node:path');
 const { Client, Events } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { onReady } = require('./events/onReady');
+const { onInteraction } = require('./events/onInteraction');
 const { validateEnv } = require('./utils/validateEnv');
 
 (async () => {
@@ -16,6 +17,8 @@ const { validateEnv } = require('./utils/validateEnv');
     module.exports = client;
 
     client.on(Events.ClientReady, async() => await onReady(client));
+
+    client.on(Events.InteractionCreate, async() => await onInteraction(interaction));
     
     await client.login(process.env.BOT_TOKEN);
 })();

@@ -5,6 +5,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const client = require('../index');
 const { REST, Routes, Collection } = require('discord.js');
+const axios = require('axios');
+const Database = require('better-sqlite3');
 
 function onReady(client) {
     console.log(`Ready! Logged in as ${client.user.tag}`)
@@ -49,8 +51,27 @@ function onReady(client) {
 		    console.error(error);
 	    }
     })();
+
+    getXRPToken()
+    setInterval(getXRPToken, Math.max(1, 5 || 1) * 60 * 1000);
+    
+};
+
+async function getXRP() {
+    await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ripple`).then(res => {
+               if (res.data && res.data[0].current_price) {
+                currentXRP = res.data[0].current_price.toFixed(4) || 0
+                console.log("XRP current price: " + currentXRP);
+            } else {
+                console.log("Error loading coin data")
+            }
+            //return;
+        }).catch(err => {
+            console.log("An error with the Coin Gecko api call: ", err.response.status, err.response.statusText);
+    });
 };
 
 module.exports = { 
-    onReady 
+    onReady,
+    currentXRP 
 }
