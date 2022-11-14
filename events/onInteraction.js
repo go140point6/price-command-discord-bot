@@ -1,5 +1,5 @@
 //const onReady = require('./onReady');
-const { onReady, currentXRP } = require('./onReady');
+const { currentXRP } = require('./onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
 const db = new Database('./data/tokens.db');

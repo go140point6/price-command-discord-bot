@@ -9,6 +9,7 @@ const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { onReady } = require('./events/onReady');
 const { onInteraction } = require('./events/onInteraction');
 const { validateEnv } = require('./utils/validateEnv');
+const { currentXRP } = require('./events/onReady');
 
 (async () => {
     validateEnv();
@@ -17,6 +18,8 @@ const { validateEnv } = require('./utils/validateEnv');
     module.exports = client;
 
     client.on(Events.ClientReady, async() => await onReady(client));
+
+    console.log(currentXRP);
 
     client.on(Events.InteractionCreate, async interaction => { 
         onInteraction(interaction)
