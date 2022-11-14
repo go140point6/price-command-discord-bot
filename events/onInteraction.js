@@ -1,4 +1,3 @@
-const { onInteraction } = require('discord.js');
 const { currentXRP } = require('./onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
