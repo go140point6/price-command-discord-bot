@@ -11,6 +11,6 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        await interaction.reply('589!');
+        //await interaction.reply('589!');
     },
 };

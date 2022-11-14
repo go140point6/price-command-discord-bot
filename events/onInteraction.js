@@ -2,6 +2,7 @@
 const XRP = require('./onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
+
 const db = new Database('./data/tokens.db');
 
 async function onInteraction(interaction) {
