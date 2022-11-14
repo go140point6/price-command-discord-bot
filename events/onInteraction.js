@@ -1,4 +1,3 @@
-//const onReady = require('./onReady');
 const XRP = require('./onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
