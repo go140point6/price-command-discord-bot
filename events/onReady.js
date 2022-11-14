@@ -60,8 +60,7 @@ function onReady(client) {
 async function getXRP() {
     await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ripple`).then(res => {
                if (res.data && res.data[0].current_price) {
-                currentXRP = res.data[0].current_price.toFixed(4) || 0
-                module.exports = currentXRP;
+                const currentXRP = res.data[0].current_price.toFixed(4) || 0
                 //console.log("XRP current price: " + currentXRP);
             } else {
                 console.log("Error loading coin data")
@@ -77,5 +76,6 @@ async function getXRPToken() {
 }
 
 module.exports = { 
-    onReady
+    onReady,
+    currentXRP
 }
