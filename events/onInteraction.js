@@ -20,7 +20,7 @@ async function onInteraction(interaction) {
         const stmt5 = db.prepare('SELECT currency, issuer FROM tokens WHERE currency = ? COLLATE NOCASE');
         var results5 = stmt5.all(ticker);
 
-        console.log("Current XRP price is $" + getXRP.currentXRP);
+        console.log("Current XRP price is $" + getXRP.price);
         console.log("Number in array for " + ticker + " is " + results5.length);
 
         if (Array.isArray(results5) && results5.length == 1) {
