@@ -52,7 +52,7 @@ function onReady(client) {
 	    }
     })();
 
-    getXRPToken()
+    getXRPToken() 
     setInterval(getXRPToken, Math.max(1, 5 || 1) * 60 * 1000);
     
 };
@@ -70,6 +70,10 @@ async function getXRP() {
             console.log("An error with the Coin Gecko api call: ", err.response.status, err.response.statusText);
     });
 };
+
+async function getXRPToken() {
+    await getXRP();
+}
 
 module.exports = { 
     onReady
