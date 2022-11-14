@@ -62,6 +62,7 @@ async function getXRP() {
                if (res.data && res.data[0].current_price) {
                 const currentXRP = res.data[0].current_price.toFixed(4) || 0
                 console.log("XRP current price: " + currentXRP);
+                module.exports.currentXRP = currentXRP;
             } else {
                 console.log("Error loading coin data")
             }
@@ -77,6 +78,5 @@ async function getXRPToken() {
 }
 
 module.exports = { 
-    onReady,
-    currentXRP
+    onReady
 }
