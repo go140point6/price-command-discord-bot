@@ -30,5 +30,5 @@ const CommandInt = function () {
 
 module.exports = { 
     CommandInt,
-    commandFiles 
+    //commandFiles 
 };
