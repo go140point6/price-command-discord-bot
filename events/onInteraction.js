@@ -39,7 +39,7 @@ async function onInteraction(interaction) {
                 interaction.editReply({ content: `Some error with api call, please try again or ping an admin.`});
             });
         } else if (Array.isArray(results5) && results5.length > 1) {
-            interaction.editReply({ content: `Found more than one ${ticker} in database and the meatbag didn't program me for that yet.` });
+            interaction.editReply({ content: `Found more than one ${ticker} in database and I am not fully .` });
         } else {
             interaction.editReply({ content: `Sorry, the meatbag didn't program me for ${ticker}, please ask him to update the database.` });
         }
