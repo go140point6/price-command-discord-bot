@@ -30,11 +30,11 @@ async function onInteraction(interaction) {
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
-                    inUSD = (inXRP * XRP.currency).toFixed(6);
+                    inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                     console.log("Current XRP price: " + inXRP);
                     console.log("Current XRP price in USD: " + XRP.currentXRP);
-                    //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    interaction.editReply({ content: "589!"})
+                    interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+                    //interaction.editReply({ content: "589!"})
                 }
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping an admin.`});
