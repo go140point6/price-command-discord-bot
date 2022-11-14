@@ -4,7 +4,7 @@ const axios = require('axios');
 const Database = require('better-sqlite3');
 
 
-function onInteraction(interaction) {
+async function onInteraction(interaction) {
     if (!interaction.isChatInputCommand()) return;
 
     const { commandName } = interaction;
