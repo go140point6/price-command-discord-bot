@@ -19,11 +19,7 @@ async function updateTokens() {
         //let count = 0;
         let id = null;
         const insert = db.prepare(`
-        INSERT INTO tokens (id, currency, issuer) 
-        VALUES (${id}, @currency, @issuer)
-        SELECT issuer
-        WHERE NOT EXISTS (SELECT 1 FROM tokens WHERE issuer = @issuer)
-        `);
+        INSERT INTO tokens (id, currency, issuer) VALUES (${id}, @currency, @issuer)`);
         //var insertQuery = "INSERT INTO tokens VALUES (?,?,?)";
 
         const insertMany = db.transaction((tokens) => {
