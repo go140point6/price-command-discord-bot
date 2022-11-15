@@ -19,12 +19,11 @@ async function getTokens() {
 
         const insertMany = db.transaction((tokens) => {
             for (const token of tokens)
-            console.log(token.currency); 
             console.log(token.name);
             //insert.run(token)
         })
 
-        //insertMany(res.data.tokens);
+        insertMany(res.data.tokens);
     });
 };
 
