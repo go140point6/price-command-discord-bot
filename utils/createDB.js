@@ -22,10 +22,10 @@ async function getTokens() {
                 // undefined == null is true (equality operator) so both are true
                 // undefined === null is false (strict equality operator)
                 if (token.name == null) {
-                    token.name = undefined;
+                    token.name = null;
                 }
                 if (token.logo_file == null) {
-                    token.logo_file = undefined;
+                    token.logo_file = null;
                 }
             insert.run(token)
             //console.log(token.name);
