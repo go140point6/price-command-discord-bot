@@ -27,10 +27,11 @@ async function getTokens() {
                 if (token.logo_file == null) {
                     token.logo_file = undefined;
                 }
-            console.log(token.name);
-            console.log(token.logo_file);
+            insert.run(token)
+            //console.log(token.name);
+            //console.log(token.logo_file);
             }
-            //insert.run(token)
+            
         });
 
         insertMany(res.data.tokens);
