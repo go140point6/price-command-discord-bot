@@ -18,12 +18,13 @@ async function getTokens() {
         const insert = db.prepare(`INSERT INTO tokens (id, currency, issuer, name, logo_file) VALUES (${id}, @currency, @issuer, @name, @logo_file)`);
 
         const insertMany = db.transaction((tokens) => {
-            for (const token of tokens)
+            for (const token of tokens) {
                 if (token.name == null) {
                     token.name = "jojo";
-                    console.log(token.name);
+                    //console.log(token.name);
                 }
-            //console.log(token.name);
+            console.log(token.name);
+            }
             //insert.run(token)
         })
 
