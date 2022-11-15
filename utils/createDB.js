@@ -15,10 +15,16 @@ async function getTokens() {
     await axios.get(`https://api.onthedex.live/public/v1/aggregator`).then(res => {
         console.log(res.data.tokens);
         let id = null;
-        const insert = db.prepare(`INSERT INTO tokens (id, currency, issuer, name, logo_file) VALUES (${id}, @currency, @issuer, @name || '', @logo_file || '')`);
+        const insert = db.prepare(`INSERT INTO tokens (id, currency, issuer, name, logo_file) VALUES (${id}, @currency, @issuer, @name, @logo_file)`);
 
         const insertMany = db.transaction((tokens) => {
             for (const token of tokens) 
+            if (!name) {
+                name = '';
+            }
+            if (!logo_file) {
+                logo_file = '';
+            }
             insert.run(token)
         })
 
