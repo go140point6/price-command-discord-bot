@@ -20,7 +20,8 @@ async function getTokens() {
         const insertMany = db.transaction((tokens) => {
             for (const token of tokens)
                 if (token.name == null) {
-                    console.log('undefined bitch');
+                    token.name = "jojo";
+                    console.log(token.name);
                 }
             //console.log(token.name);
             //insert.run(token)
