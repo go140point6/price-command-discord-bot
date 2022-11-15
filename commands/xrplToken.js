@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const XRP = require('./onReady');
+const XRP = require('../events/onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
 
