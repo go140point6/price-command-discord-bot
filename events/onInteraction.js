@@ -7,8 +7,10 @@ const db = new Database('./data/tokens.db');
 async function onInteraction(interaction) {
     if (!interaction.isChatInputCommand()) return;
 
-    const { commandName } = interaction;
+    //const { commandName } = interaction;
+    const command = interaction.client.commands.get(interaction.commandName);
 
+    /*
     if (commandName === 'ping') {
         await interaction.reply('Pong!');
         } else if (commandName === 'beep') {
@@ -43,7 +45,7 @@ async function onInteraction(interaction) {
         } else {
             interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
         }
-    }
+    }*/
 };
 
 module.exports = { 
