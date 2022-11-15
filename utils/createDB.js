@@ -19,14 +19,19 @@ async function getTokens() {
 
         const insertMany = db.transaction((tokens) => {
             for (const token of tokens) {
+                // undefined == null is true (equality operator) so both are true
+                // undefined === null is false (strict equality operator)
                 if (token.name == null) {
-                    token.name = "jojo";
-                    //console.log(token.name);
+                    token.name = undefined;
+                }
+                if (token.logo_file == null) {
+                    token.logo_file = undefined;
                 }
             console.log(token.name);
+            console.log(token.logo_file);
             }
             //insert.run(token)
-        })
+        });
 
         insertMany(res.data.tokens);
     });
