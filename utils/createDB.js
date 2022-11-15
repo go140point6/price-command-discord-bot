@@ -19,13 +19,8 @@ async function getTokens() {
 
         const insertMany = db.transaction((tokens) => {
             for (const token of tokens) 
-            if (!name) {
-                name = '';
-            }
-            if (!logo_file) {
-                logo_file = '';
-            }
-            insert.run(token)
+            console.log(token);
+            //insert.run(token)
         })
 
         insertMany(res.data.tokens);
