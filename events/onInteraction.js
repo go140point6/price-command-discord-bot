@@ -9,6 +9,7 @@ async function onInteraction(interaction) {
 
     //const { commandName } = interaction;
     const command = interaction.client.commands.get(interaction.commandName);
+    console.log(command);
 
     /*
     if (commandName === 'ping') {
