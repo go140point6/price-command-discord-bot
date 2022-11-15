@@ -1,4 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
+const axios = require('axios');
+const Database = require('better-sqlite3');
+
+const db = new Database('./data/tokens.db');
 
 module.exports = {
     data: new SlashCommandBuilder()
