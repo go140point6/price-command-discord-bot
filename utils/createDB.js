@@ -6,7 +6,7 @@ const Database = require('better-sqlite3');
 const db = new Database('../data/tokens.db', {verbose: console.log });
 
 var tableName = "tokens";
-var fields = "(id INTEGER PRIMARY KEY AUTOINCREMENT, currency TEXT, issuer TEXT, name TEXT, logo_file TEXT)";
+var fields = "(id INTEGER PRIMARY KEY AUTOINCREMENT, currency TEXT, issuer TEXT, name TEXT DEFAULT '', logo_file TEXT DEFAULT '')";
 var sql = `CREATE TABLE IF NOT EXISTS ${tableName} ${fields}`;
 const createTable = db.prepare(sql);
 createTable.run();
