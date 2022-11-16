@@ -29,14 +29,7 @@ module.exports = {
             await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`).then(res => {
                 //if(res.data && res.data.id.usd) {
                     let result = res.data[id].usd;
-                    console.log(res.data[id].usd);
-                    //console.log(res.data.id.usd);
-                    
-                    //inUSD = .toFixed(6);
-                    //console.log("Current XRP price: " + inXRP);
-                    //console.log("Current XRP price in USD: " + inUSD);
-                    //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    interaction.editReply({ content: `${result}` });
+                    interaction.editReply({ content: `Current price of ${ticker} is USD ${result}` });
                 //}
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
