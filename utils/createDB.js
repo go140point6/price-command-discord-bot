@@ -45,19 +45,19 @@ async function getTokens() {
 
 async function getCrypto() {
     await axios.get(`https://api.coingecko.com/api/v3/coins/list?include_platform=false`).then(res => {
-        console.log(res.data.tokens);
-        exit();
+        console.log(res.data);
+        /*
         const insertCrypto = db.prepare(`INSERT INTO crypto (id, symbol, name) VALUES (@id, @symbol, @name)`);
 
-        const insertManyCrypto = db.transaction((tokens) => {
-            for (const token of tokens) {
-                insertCrypto.run(token)
+        const insertManyCrypto = db.transaction((cryptos) => {
+            for (const crypto of cryptos) {
+                insertCrypto.run(crypto)
             }
             
         });
 
-        insertManyCrypto(res.data.tokens);
-    });
+        insertManyCrypto(res.data.);
+    */});
 };
 
 async function initialDB() {
