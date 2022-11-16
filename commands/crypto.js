@@ -27,14 +27,15 @@ module.exports = {
             //console.log("Array exists and has exactly 1 item");
             let id = results5[0].id;
             await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`).then(res => {
-                //if(res.data && res.data.pairs[0].last) {
-                    console.log(res.data);
+                if(res.data && res.data[0].last) {
+                    console.log(res.data[0].id);
+                    
                     //inUSD = .toFixed(6);
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
                     interaction.editReply({ content: `jojo` });
-                //}
+                }
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
             });
