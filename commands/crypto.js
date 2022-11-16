@@ -28,7 +28,7 @@ module.exports = {
             let id = results5[0].id;
             await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`).then(res => {
                 //if(res.data && res.data.id.usd) {
-                    let result = `res.data.${id}`;
+                    let result = res.data.${id};
                     console.log(res.data.bitcoin.usd);
                     //console.log(res.data.id.usd);
                     
