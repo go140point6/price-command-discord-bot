@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const XRP = require('../events/onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
@@ -19,7 +19,7 @@ module.exports = {
         await interaction.deferReply();
 
         const ticker = (interaction.options.getString("ticker", true)).toUpperCase();
-        const stmt5 = db.prepare('SELECT currency, issuer FROM xrplTokens WHERE currency = ? COLLATE NOCASE');
+        const stmt5 = db.prepare('SELECT currency, issuer, name, logo_file FROM xrplTokens WHERE currency = ? COLLATE NOCASE');
         var results5 = stmt5.all(ticker);
 
         console.log("Current XRP price is $" + XRP.currentXRP);
@@ -29,14 +29,26 @@ module.exports = {
             //console.log("Array exists and has exactly 1 item");
             let currency = results5[0].currency;
             let issuer = results5[0].issuer;
+            let name = results5[0].name;
+            let logo_file = results5[0].logo_file;
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
                     inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
-                    interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                }
+                    //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+                    
+                    const embedToken = new EmbedBuilder()
+                        .setColor('RANDOM')
+                        .setTitle(`Current price of ${ticker} in USD`)
+                        .addFields(
+                            { name: ticker, value: inUSD },
+                        )
+                        .setImage(logo_file)
+                    }
+
+                    interaction.editReply({ embeds: [embedToken]});
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
             });
