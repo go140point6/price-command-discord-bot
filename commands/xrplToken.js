@@ -48,7 +48,7 @@ module.exports = {
                         .setImage(logo_file)
                     }
 
-                    interaction.editReply({ embeds: [embedToken]});
+                    interaction.edit({ embeds: [embedToken]});
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
             });
