@@ -3,7 +3,7 @@ const XRP = require('../events/onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
 
-const db = new Database('./data/tokens.db');
+const db = new Database('./data/data.db');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -19,7 +19,7 @@ module.exports = {
         await interaction.deferReply();
 
         const ticker = (interaction.options.getString("ticker", true)).toUpperCase();
-        const stmt5 = db.prepare('SELECT currency, issuer FROM tokens WHERE currency = ? COLLATE NOCASE');
+        const stmt5 = db.prepare('SELECT currency, issuer FROM xrplTokens WHERE currency = ? COLLATE NOCASE');
         var results5 = stmt5.all(ticker);
 
         console.log("Current XRP price is $" + XRP.currentXRP);
