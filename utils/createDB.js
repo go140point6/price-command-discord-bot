@@ -3,21 +3,26 @@
 const axios = require('axios');
 const Database = require('better-sqlite3');
 
-const db = new Database('../data/tokens.db', {verbose: console.log });
+const db = new Database('../data/data.db', {verbose: console.log });
 
-var tableName = "tokens";
-var fields = "(id INTEGER PRIMARY KEY AUTOINCREMENT, currency TEXT, issuer TEXT, name TEXT, logo_file TEXT)";
-var sql = `CREATE TABLE IF NOT EXISTS ${tableName} ${fields}`;
-const createTable = db.prepare(sql);
-createTable.run();
+var tableXrpl = "xrplTokens";
+var tableCrypto = "crypto"
+var fieldsXrpl = "(id INTEGER PRIMARY KEY AUTOINCREMENT, currency TEXT, issuer TEXT, name TEXT, logo_file TEXT)";
+var fieldsCrypto = "(id TEXT PRIMARY KEY, symbol TEXT, name TEXT)";
+var sqlXrpl = `CREATE TABLE IF NOT EXISTS ${tableXrpl} ${fieldsXrpl}`;
+var sqlCrypto = `CREATE TABLE IF NOT EXISTS ${tableCrypto} ${fieldsCrypto}`;
+const createTableXrpl = db.prepare(sqlXrpl);
+const createTableCrypto = db.prepare(sqlCrypto);
+createTableXrpl.run();
+createTableCrypto.run();
 
 async function getTokens() {
     await axios.get(`https://api.onthedex.live/public/v1/aggregator`).then(res => {
         //console.log(res.data.tokens);
         let id = null;
-        const insert = db.prepare(`INSERT INTO tokens (id, currency, issuer, name, logo_file) VALUES (${id}, @currency, @issuer, @name, @logo_file)`);
+        const insertXrpl = db.prepare(`INSERT INTO xrplTokens (id, currency, issuer, name, logo_file) VALUES (${id}, @currency, @issuer, @name, @logo_file)`);
 
-        const insertMany = db.transaction((tokens) => {
+        const insertManyXrpl = db.transaction((tokens) => {
             for (const token of tokens) {
                 // undefined == null is true (equality operator) so both are true
                 // undefined === null is false (strict equality operator)
@@ -27,22 +32,42 @@ async function getTokens() {
                 if (token.logo_file == null) {
                     token.logo_file = null;
                 }
-            insert.run(token)
+            insertXrpl.run(token)
             //console.log(token.name);
             //console.log(token.logo_file);
             }
             
         });
 
-        insertMany(res.data.tokens);
+        insertManyXrpl(res.data.tokens);
     });
 };
 
-async function grabTokens() {
+async function getCrypto() {
+    await axios.get(`https://api.coingecko.com/api/v3/coins/list?include_platform=false`).then(res => {
+        //console.log(res.data.tokens);
+        const insertCrypto = db.prepare(`INSERT INTO crypto (id, symbol, name) VALUES (@id, @symbol, @name)`);
+
+        const insertManyCrypto = db.transaction((tokens) => {
+            for (const token of tokens) {
+                insertCrypto.run(token)
+            }
+            
+        });
+
+        insertManyCrypto(res.data.tokens);
+    });
+};
+
+async function initialDB() {
     await getTokens();
-    const stmt = db.prepare("SELECT * FROM tokens");
+    const stmt = db.prepare("SELECT * FROM xrplTokens");
     var results = stmt.all();
     console.log(results);
+    await getCrypto();
+    const stmt2 = db.prepare("SELECT * FROM crypto");
+    var results2 = stmt2.all();
+    console.log(results2);
 }
 
-grabTokens();
+initialDB();
