@@ -55,7 +55,7 @@ async function getCrypto() {
             
         });
 
-        insertManyCrypto(res.data.cryptos);
+        insertManyCrypto(res.data);
     });
 };
 
