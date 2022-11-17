@@ -54,7 +54,7 @@ module.exports = {
                         .setTitle(`Welcome to The Terminal`)
                         .setAuthor({ name: client.user.username })
                         .setDescription('This is the description field')
-                        .setThumbnail(client.user.defaultAvatarURL)
+                        .setThumbnail(client.user.displayAvatarURL)
                         .addFields(
                             { name: ticker, value: inUSD },
                             { name: ticker, value: inUSD },
