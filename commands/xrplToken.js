@@ -38,8 +38,7 @@ module.exports = {
                     .setTitle(`Current price of ${ticker} in USD`)
                     .addFields(
                         { name: ticker, value: inUSD },
-                    )
-                    .setImage(logo_file)
+                    );
                 /*
                 const embedPing = new EmbedBuilder()
                     .setTitle('Ping!')
