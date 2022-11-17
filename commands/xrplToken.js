@@ -57,6 +57,7 @@ module.exports = {
                     console.log(`User username: ${client.user.username}`);
 
                     console.log(numOfTokens[2].name);
+                    console.log(inUSD);
 
                     function createEmbedFields(numArray) {
                         let embedFields = [];
