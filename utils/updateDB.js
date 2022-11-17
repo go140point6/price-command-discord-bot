@@ -5,8 +5,6 @@ const Database = require('better-sqlite3');
 
 const db = new Database('../data/tokens.db', {verbose: console.log });
 
-
-
 //var tableName = "tokens";
 //var fields = "(id INTEGER PRIMARY KEY AUTOINCREMENT, currency TEXT, issuer TEXT)";
 //var sql = `CREATE TABLE IF NOT EXISTS ${tableName} ${fields}`;
@@ -15,8 +13,6 @@ const db = new Database('../data/tokens.db', {verbose: console.log });
 
 async function updateTokens() {
     await axios.get(`https://api.onthedex.live/public/v1/aggregator`).then(res => {
-        //console.log(res.data.tokens);
-        //let count = 0;
         let id = null;
         const insert = db.prepare(`
         INSERT INTO tokens (id, currency, issuer) VALUES (${id}, @currency, @issuer)`);
