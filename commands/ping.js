@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 const embedPing = new EmbedBuilder()
-	.setColor('RANDOM')
+	.setColor(RANDOM)
 	.setTitle('Ping!')
 	.addFields(
 		{ name: 'Ping', value: 'Pong!'},
