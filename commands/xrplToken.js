@@ -60,8 +60,8 @@ module.exports = {
                         let embedFields = [];
                         let num = 0;
                         while (num < numArray) {
-                            //embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
-                            embedFields.push({ name: 'ticker', value: 'inUSD' });
+                            embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
+                            //embedFields.push({ name: 'ticker', value: 'inUSD' });
                             num++
                         }
                         return embedFields;
