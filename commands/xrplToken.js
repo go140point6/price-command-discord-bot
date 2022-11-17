@@ -43,7 +43,8 @@ module.exports = {
 
         console.log(numOfTokens);
 
-        console.log(numOfTokens.keys);
+        let test = "{ name: ticker, value: inUSD },"
+
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
@@ -68,7 +69,7 @@ module.exports = {
                         .addFields(
                             { name: ticker, value: inUSD },
                             { name: ticker, value: inUSD },
-                            { name: ticker, value: inUSD },
+                            `${test}`,
                             { name: 'Inline field title', value: 'Some value here', inline: true },
                             { name: 'Inline field title', value: 'Some value here', inline: true },
                         )
