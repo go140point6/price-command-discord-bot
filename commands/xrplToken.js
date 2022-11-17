@@ -37,7 +37,8 @@ module.exports = {
                     //.setColor('RANDOM')
                     .setTitle(`Current price of ${ticker} in USD`)
                     .addFields(
-                        { name: ticker, value: inUSD },
+                        { name: 'Ping', value: 'Pong!'},
+                        //{ name: ticker, value: inUSD },
                     );
                 /*
                 const embedPing = new EmbedBuilder()
