@@ -43,19 +43,6 @@ module.exports = {
 
         console.log(numOfTokens[2].name);
 
-        function createEmbedFields(numArray) {
-            let embedFields = [];
-            let num = 0;
-            while (num < numArray) {
-                
-                //embedFields.push({ name: 'ticker', value: 'inUSD' });
-                num++
-            }
-            return embedFields;
-        }
-
-        let fields = createEmbedFields(results5.length);
-
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
@@ -69,6 +56,18 @@ module.exports = {
                     console.log(`User avatar URL: ${client.user.avatarURL()}`)
                     console.log(`User username: ${client.user.username}`);
 
+                    function createEmbedFields(numArray) {
+                        let embedFields = [];
+                        let num = 0;
+                        while (num < numArray) {
+                            //embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
+                            embedFields.push({ name: 'ticker', value: 'inUSD' });
+                            num++
+                        }
+                        return embedFields;
+                    }
+            
+                    let fields = createEmbedFields(results5.length);
 
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkRed')
