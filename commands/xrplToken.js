@@ -47,11 +47,17 @@ module.exports = {
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkRed')
                         .setTitle(`Current price of ${ticker} in USD`)
+                        .setDescription('This is the description field')
+                        .setThumbnail('https://www.onthedex.live/tokens/logo/solo_rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz.svg')
                         .addFields(
-                            //{ name: 'Ping', value: 'Pong!'},
                             { name: ticker, value: inUSD },
+                            { name: 'Inline field title', value: 'Some value here', inline: true },
+                            { name: 'Inline field title', value: 'Some value here', inline: true },
                         )
-                        .setImage('https://www.onthedex.live/tokens/logo/solo_rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz.svg');
+                        .setImage('https://www.onthedex.live/tokens/logo/solo_rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz.svg')
+                        .setTimestamp()
+                        .setFooter({ text: 'Some footer text here', iconURL: 'https://www.onthedex.live/tokens/logo/solo_rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz.svg' });
+
                     /*
                     const embedPing = new EmbedBuilder()
                         .setTitle('Ping!')
