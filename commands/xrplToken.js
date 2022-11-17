@@ -55,7 +55,6 @@ module.exports = {
 
         
         let fields = createEmbedFields(results5.length);
-        console.log("embedFields: " + embedFields);
         console.log("fields: " + fields);
 
         //if (Array.isArray(results5) && results5.length == 1) {
