@@ -110,7 +110,7 @@ module.exports = {
                     interaction.editReply({ embeds: [embedToken]});
                 }
             }).catch(err => {
-                interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`, err});
+                interaction.editReply({ content: err});
             });
         //} else if (Array.isArray(results5) && results5.length > 1) {
         //    interaction.editReply({ content: `Found more than one ${ticker} in database and I am not fully programmed for that yet.` });
