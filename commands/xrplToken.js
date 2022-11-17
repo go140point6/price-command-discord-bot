@@ -41,58 +41,45 @@ module.exports = {
             numOfTokens.push(result)
         }
 
-        
+        let numArray = results5.length;
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
-                    const inXRP = res.data.pairs[0].last;
-                    var inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                    //console.log("Current XRP price: " + inXRP);
-                    //console.log("Current XRP price in USD: " + inUSD);
-                    //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    console.log(`User tag: ${client.user.tag}`);
-                    console.log(`User avatar URL: ${client.user.avatarURL()}`)
-                    console.log(`User username: ${client.user.username}`);
-
-                    console.log(numOfTokens[2].name);
-                    console.log(inUSD);
-
-                    function createEmbedFields(numArray) {
+                    let num = 0;
+                    let embedFields = [];
+                    while (num < numArray) {
+                        console.log(num);
+                        let inXRP = res.data.pairs[num].last;
+                        let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                         console.log(inUSD);
-                        let embedFields = [];
-                        let num = 0;
-                        while (num < numArray) {
-                            console.log(num);
-                            console.log(numOfTokens[num].name);
-                            console.log(inUSD);
-                            //embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
-                            embedFields.push({ name: 'ticker', value: 'inUSD' });
+
+                        function createEmbedFields(numArray) {
+                            embedFields.push({ name: numOfTokens[num].name, value: inUSD})
                             num++
                         }
-                        return embedFields;
                     }
-            
+                    return embedFields;
                     let fields = createEmbedFields(results5.length);
 
-                    const embedToken = new EmbedBuilder()
-                        .setColor('DarkRed')
-                        .setTitle(`Welcome to The Terminal`)
-                        .setAuthor({ name: client.user.username })
-                        .setDescription(`The query results for ${ticker}:`)
-                        .setThumbnail(client.user.avatarURL())
-                        .addFields(
-                            fields
-                            //{ name: ticker, value: inUSD },
-                            //{ name: ticker, value: inUSD },
-                            //{ name: ticker, value: inUSD },
-                            //{ name: 'Inline field title', value: 'Some value here', inline: true },
-                            //{ name: 'Inline field title', value: 'Some value here', inline: true },
-                        )
-                        .setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
-                        .setTimestamp()
-                        .setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
+                const embedToken = new EmbedBuilder()
+                    .setColor('DarkRed')
+                    .setTitle(`Welcome to The Terminal`)
+                    .setAuthor({ name: client.user.username })
+                    .setDescription(`The query results for ${ticker}:`)
+                    .setThumbnail(client.user.avatarURL())
+                    .addFields(
+                        fields
+                        //{ name: ticker, value: inUSD },
+                        //{ name: ticker, value: inUSD },
+                        //{ name: ticker, value: inUSD },
+                        //{ name: 'Inline field title', value: 'Some value here', inline: true },
+                        //{ name: 'Inline field title', value: 'Some value here', inline: true },
+                    )
+                    .setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                    .setTimestamp()
+                    .setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
 
                     /*
                     const embedPing = new EmbedBuilder()
