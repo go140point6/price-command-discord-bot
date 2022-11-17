@@ -52,9 +52,9 @@ module.exports = {
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkRed')
                         .setTitle(`Welcome to The Terminal`)
-                        .setAuthor({ name: client.user.username, iconURL: client.user.defaultAvatarURL })
+                        .setAuthor({ name: client.user.username })
                         .setDescription('This is the description field')
-                        .setThumbnail('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                        .setThumbnail(client.user.defaultAvatarURL)
                         .addFields(
                             { name: ticker, value: inUSD },
                             { name: ticker, value: inUSD },
