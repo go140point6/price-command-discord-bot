@@ -42,13 +42,18 @@ module.exports = {
                     )
                     .setImage(logo_file)
                     */
+                const embedPing = new EmbedBuilder()
+                    .setTitle('Ping!')
+                    .addFields(
+                        { name: 'Ping', value: 'Pong!'},
+                    );
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
                     inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
-                    interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    //interaction.edit({ embeds: [embedToken]});
+                    //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+                    interaction.edit({ embeds: [embedPing]});
                 }
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
