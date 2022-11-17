@@ -25,22 +25,22 @@ module.exports = {
         console.log("Current XRP price is $" + XRP.currentXRP);
         console.log("Number in array for " + ticker + " is " + results5.length);
 
-        let currency = results5[0].currency;
-        let issuer = results5[0].issuer;
-        let name = results5[0].name;
-        let logo_file = results5[0].logo_file;
-
-        const embedToken = new EmbedBuilder()
-            //.setColor('RANDOM')
-            .setTitle(`Current price of ${ticker} in USD`)
-            .addFields(
-                { name: ticker, value: inUSD },
-            )
-            .setImage(logo_file)
-
         if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
+                let currency = results5[0].currency;
+                let issuer = results5[0].issuer;
+                let name = results5[0].name;
+                let logo_file = results5[0].logo_file;
+        
+                const embedToken = new EmbedBuilder()
+                    //.setColor('RANDOM')
+                    .setTitle(`Current price of ${ticker} in USD`)
+                    .addFields(
+                        { name: ticker, value: inUSD },
+                    )
+                    .setImage(logo_file)
+        
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
                     inUSD = (inXRP * XRP.currentXRP).toFixed(6);
