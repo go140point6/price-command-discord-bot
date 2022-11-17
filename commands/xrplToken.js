@@ -42,7 +42,7 @@ module.exports = {
                     .setTitle(`Current price of ${ticker} in USD`)
                     .addFields(
                         //{ name: 'Ping', value: 'Pong!'},
-                        { name: ticker, value: inUSD },
+                        { name: ticker, value: issuer },
                     )
                     //.setImage(`${logo_file}`);
                 /*
