@@ -35,7 +35,7 @@ module.exports = {
         console.log(name);
         console.log(logo_file);
 
-        if (Array.isArray(results5) && results5.length == 1) {
+        //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
@@ -53,7 +53,7 @@ module.exports = {
                         .setColor('DarkRed')
                         .setTitle(`Welcome to The Terminal`)
                         .setAuthor({ name: client.user.username })
-                        .setDescription('This is the description field')
+                        .setDescription('Your query produced the following results:')
                         .setThumbnail(client.user.avatarURL())
                         .addFields(
                             { name: ticker, value: inUSD },
@@ -78,10 +78,10 @@ module.exports = {
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
             });
-        } else if (Array.isArray(results5) && results5.length > 1) {
-            interaction.editReply({ content: `Found more than one ${ticker} in database and I am not fully programmed for that yet.` });
-        } else {
-            interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
-        }
+        //} else if (Array.isArray(results5) && results5.length > 1) {
+        //    interaction.editReply({ content: `Found more than one ${ticker} in database and I am not fully programmed for that yet.` });
+        //} else {
+        //    interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
+        //}
     }
 };
