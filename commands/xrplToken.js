@@ -33,6 +33,7 @@ module.exports = {
         if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
+                /*
                 const embedToken = new EmbedBuilder()
                     //.setColor('RANDOM')
                     .setTitle(`Current price of ${ticker} in USD`)
@@ -40,14 +41,14 @@ module.exports = {
                         { name: ticker, value: inUSD },
                     )
                     .setImage(logo_file)
-        
+                    */
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
                     inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
-                    //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    interaction.edit({ embeds: [embedToken]});
+                    interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+                    //interaction.edit({ embeds: [embedToken]});
                 }
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
