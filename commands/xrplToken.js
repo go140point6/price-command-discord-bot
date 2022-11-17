@@ -48,7 +48,7 @@ module.exports = {
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
-                    inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                    const inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
