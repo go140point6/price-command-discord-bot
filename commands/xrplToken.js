@@ -48,7 +48,7 @@ module.exports = {
                         .setColor('DarkRed')
                         .setTitle(`Current price of ${ticker} in USD`)
                         .setDescription('This is the description field')
-                        .setThumbnail('https://www.onthedex.live/tokens/logo/solo_rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz.svg')
+                        .setThumbnail('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                         .addFields(
                             { name: ticker, value: inUSD },
                             { name: ticker, value: inUSD },
