@@ -45,7 +45,7 @@ module.exports = {
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
 
                     const embedToken = new EmbedBuilder()
-                        .setColor('RANDOM')
+                        .setColor('DarkRed')
                         .setTitle(`Current price of ${ticker} in USD`)
                         .addFields(
                             //{ name: 'Ping', value: 'Pong!'},
