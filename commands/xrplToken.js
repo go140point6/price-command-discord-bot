@@ -43,9 +43,6 @@ module.exports = {
 
         console.log(numOfTokens);
 
-        let test = { name: ticker, value: inUSD }
-        console.log(test);
-
         function createEmbedFields(numArray) {
             let embedFields = [];
             let num = 0;
