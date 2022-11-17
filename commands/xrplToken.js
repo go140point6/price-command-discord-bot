@@ -51,6 +51,8 @@ module.exports = {
                         .setThumbnail('https://www.onthedex.live/tokens/logo/solo_rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz.svg')
                         .addFields(
                             { name: ticker, value: inUSD },
+                            { name: ticker, value: inUSD },
+                            { name: ticker, value: inUSD },
                             { name: 'Inline field title', value: 'Some value here', inline: true },
                             { name: 'Inline field title', value: 'Some value here', inline: true },
                         )
