@@ -60,6 +60,7 @@ module.exports = {
                     console.log(inUSD);
 
                     function createEmbedFields(numArray) {
+                        console.log(inUSD);
                         let embedFields = [];
                         let num = 0;
                         while (num < numArray) {
