@@ -56,9 +56,10 @@ module.exports = {
                         let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                         console.log(inUSD);
 
-                        function createEmbedFields(numArray) {
+                        function createEmbedFields() {
                             embedFields.push({ name: numOfTokens[num].name, value: inUSD})
                         }
+                        console.log(embedFields);
                         num++;
                     }
                     return embedFields;
