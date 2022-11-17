@@ -46,13 +46,13 @@ module.exports = {
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
                     console.log(`User tag: ${client.user.tag}`);
                     console.log(`User avatar URL: ${client.user.defaultAvatarURL}`)
-                    console.log(`User tag: ${client.user.username}`);
+                    console.log(`User username: ${client.user.username}`);
 
 
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkRed')
                         .setTitle(`Welcome to The Terminal`)
-                        .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png' })
+                        .setAuthor({ name: client.user.username, iconURL: client.user.defaultAvatarURL })
                         .setDescription('This is the description field')
                         .setThumbnail('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                         .addFields(
