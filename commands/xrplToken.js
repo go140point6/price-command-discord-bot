@@ -47,6 +47,7 @@ module.exports = {
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkRed')
                         .setTitle(`Current price of ${ticker} in USD`)
+                        .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
                         .setDescription('This is the description field')
                         .setThumbnail('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                         .addFields(
