@@ -53,9 +53,10 @@ module.exports = {
             return embedFields;
         }
 
-        console.log(embedFields);
+        
         let fields = createEmbedFields(results5.length);
-        console.log(fields);
+        console.log("embedFields: " + embedFields);
+        console.log("fields: " + fields);
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
