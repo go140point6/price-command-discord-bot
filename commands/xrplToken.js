@@ -57,8 +57,8 @@ module.exports = {
 
                         function createEmbedFields(numArray) {
                             embedFields.push({ name: numOfTokens[num].name, value: inUSD})
-                            num++
                         }
+                        num++;
                     }
                     return embedFields;
                     let fields = createEmbedFields(results5.length);
