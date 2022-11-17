@@ -54,13 +54,15 @@ module.exports = {
                         while (num < numArray) {
                             let inXRP = res.data.pairs[num].last;
                             let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                            console.log(inXRP);
                             console.log(inUSD);
-                            embedFields.push({ name: 'ticker', value: 'inUSD' });
+                            //embedFields.push({ name: 'ticker', value: 'inUSD' });
                             num++;
+                            console.log(num);
                         }
                         return embedFields;
                     }
-                    
+
                     let fields = createEmbedFields(results5.length);
 
                 const embedToken = new EmbedBuilder()
