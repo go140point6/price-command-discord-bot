@@ -44,6 +44,7 @@ module.exports = {
         console.log(numOfTokens);
 
         let test = "{ name: ticker, value: inUSD }"
+        console.log(test);
 
 
         //if (Array.isArray(results5) && results5.length == 1) {
