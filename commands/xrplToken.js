@@ -45,6 +45,9 @@ module.exports = {
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
                     console.log(`User tag: ${client.user.tag}`);
+                    console.log(`User avatar URL: ${client.user.defaultAvatarURL}`)
+                    console.log(`User tag: ${client.user.username}`);
+
 
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkRed')
