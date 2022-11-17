@@ -48,21 +48,19 @@ module.exports = {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
-                    let num = 0;
-                    let embedFields = [];
-                    while (num < numArray) {
-                        console.log("while: " + num);
-                        let inXRP = res.data.pairs[num].last;
-                        let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                        console.log(inUSD);
-
-                        function createEmbedFields() {
-                            embedFields.push({ name: numOfTokens[num].name, value: inUSD})
+                    function createEmbedFields(numArray) {
+                        let num = 0;
+                        let embedFields = [];
+                        while (num < numArray) {
+                            let inXRP = res.data.pairs[num].last;
+                            let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                            console.log(inUSD);
+                            embedFields.push({ name: 'ticker', value: 'inUSD' });
+                            num++;
                         }
-                        console.log(embedFields);
-                        num++;
+                        return embedFields;
                     }
-                    return embedFields;
+                    
                     let fields = createEmbedFields(results5.length);
 
                 const embedToken = new EmbedBuilder()
