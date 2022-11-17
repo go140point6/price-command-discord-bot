@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const XRP = require('../events/onReady');
 const axios = require('axios');
 const Database = require('better-sqlite3');
+const client = require('../index');
 
 const db = new Database('./data/data.db');
 
@@ -43,11 +44,12 @@ module.exports = {
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+                    console.log(`User tag: ${client.user.tag}`);
 
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkRed')
-                        .setTitle(`Current price of ${ticker} in USD`)
-                        .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+                        .setTitle(`Welcome to The Terminal`)
+                        .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png' })
                         .setDescription('This is the description field')
                         .setThumbnail('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                         .addFields(
