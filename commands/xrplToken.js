@@ -35,7 +35,13 @@ module.exports = {
         console.log(name);
         console.log(logo_file);
 
+        let numOfTokens = [];
         console.log(results5);
+        for (const token of tokens) {
+            numOfTokens.push(token)
+        }
+
+        console.log(numOfTokens);
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
