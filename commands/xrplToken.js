@@ -37,27 +37,28 @@ module.exports = {
         if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
-                const embedToken = new EmbedBuilder()
-                    //.setColor('RANDOM')
-                    .setTitle(`Current price of ${ticker} in USD`)
-                    .addFields(
-                        //{ name: 'Ping', value: 'Pong!'},
-                        { name: ticker, value: issuer },
-                    )
-                    //.setImage(`${logo_file}`);
-                /*
-                const embedPing = new EmbedBuilder()
-                    .setTitle('Ping!')
-                    .addFields(
-                        { name: 'Ping', value: 'Pong!'},
-                    );
-                */
                 if(res.data && res.data.pairs[0].last) {
                     const inXRP = res.data.pairs[0].last;
                     inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
+
+                    const embedToken = new EmbedBuilder()
+                        //.setColor('RANDOM')
+                        .setTitle(`Current price of ${ticker} in USD`)
+                        .addFields(
+                            //{ name: 'Ping', value: 'Pong!'},
+                            { name: ticker, value: issuer },
+                        )
+                        //.setImage(`${logo_file}`);
+                    /*
+                    const embedPing = new EmbedBuilder()
+                        .setTitle('Ping!')
+                        .addFields(
+                            { name: 'Ping', value: 'Pong!'},
+                        );
+                    */
                     interaction.editReply({ embeds: [embedToken]});
                 }
             }).catch(err => {
