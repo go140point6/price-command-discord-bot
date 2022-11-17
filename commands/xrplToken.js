@@ -41,7 +41,7 @@ module.exports = {
             numOfTokens.push(result)
         }
 
-        console.log(numOfTokens[2].name);
+        
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
@@ -56,12 +56,17 @@ module.exports = {
                     console.log(`User avatar URL: ${client.user.avatarURL()}`)
                     console.log(`User username: ${client.user.username}`);
 
+                    console.log(numOfTokens[2].name);
+
                     function createEmbedFields(numArray) {
                         let embedFields = [];
                         let num = 0;
                         while (num < numArray) {
-                            embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
-                            //embedFields.push({ name: 'ticker', value: 'inUSD' });
+                            console.log(num);
+                            //console.log(numOfTokens[num].name);
+                            //console.log(numOfTokens[num].inUSD);
+                            //embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
+                            embedFields.push({ name: 'ticker', value: 'inUSD' });
                             num++
                         }
                         return embedFields;
