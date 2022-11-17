@@ -41,7 +41,7 @@ module.exports = {
             numOfTokens.push(result)
         }
 
-        console.log(numOfTokens[0]);
+        console.log(numOfTokens[2]);
 
         function createEmbedFields(numArray) {
             let embedFields = [];
