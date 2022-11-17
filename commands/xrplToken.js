@@ -53,7 +53,7 @@ module.exports = {
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    interaction.edit({ embeds: [embedPing]});
+                    interaction.editReply({ embeds: [embedPing]});
                 }
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
