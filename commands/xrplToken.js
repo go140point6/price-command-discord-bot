@@ -41,21 +41,20 @@ module.exports = {
             numOfTokens.push(result)
         }
 
-        console.log(numOfTokens);
+        console.log(numOfTokens[0]);
 
         function createEmbedFields(numArray) {
             let embedFields = [];
             let num = 0;
             while (num < numArray) {
+
                 embedFields.push({ name: 'ticker', value: 'inUSD' });
                 num++
             }
             return embedFields;
         }
 
-        
         let fields = createEmbedFields(results5.length);
-        console.log("fields: " + fields);
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
@@ -75,7 +74,7 @@ module.exports = {
                         .setColor('DarkRed')
                         .setTitle(`Welcome to The Terminal`)
                         .setAuthor({ name: client.user.username })
-                        .setDescription(`The query results for ${ticker}`)
+                        .setDescription(`The query results for ${ticker}:`)
                         .setThumbnail(client.user.avatarURL())
                         .addFields(
                             fields
