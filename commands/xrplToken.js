@@ -43,7 +43,7 @@ module.exports = {
 
         console.log(numOfTokens);
 
-        let test = "{ name: ticker, value: inUSD },"
+        let test = "{ name: ticker, value: inUSD }"
 
 
         //if (Array.isArray(results5) && results5.length == 1) {
