@@ -41,7 +41,7 @@ module.exports = {
             numOfTokens.push(result)
         }
 
-        console.log(numOfTokens.name);
+        console.log(numOfTokens.name[0]);
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
