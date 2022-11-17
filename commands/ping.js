@@ -1,10 +1,18 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+
+const embedPing = new EmbedBuilder()
+	.setColor('RANDOM')
+	.setTitle('Ping!')
+	.addFields(
+		{ name: 'Ping', value: 'Pong!'},
+	);
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+		//await interaction.reply('Pong!');
+		await interaction.reply({ embeds: [embedPing] });
 	},
 };
