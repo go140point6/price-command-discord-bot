@@ -64,12 +64,12 @@ module.exports = {
                         let embedFields = [];
                         let num = 0;
                         console.log(num);
-                        while (num < numArray) {
+                        while (parseInt(num) < numArray) {
                             //console.log(num);
                             //console.log(numOfTokens[num].name);
                             //console.log(inUSD);
                             //embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
-                            let inXRP = res.data.pairs[0].last;
+                            let inXRP = res.data.pairs[num].last;
                             let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                             console.log(inXRP);
                             console.log(inUSD);
