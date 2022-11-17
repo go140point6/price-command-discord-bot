@@ -5,6 +5,14 @@ const Database = require('better-sqlite3');
 
 const db = new Database('./data/data.db');
 
+const embedToken = new EmbedBuilder()
+    //.setColor('RANDOM')
+    .setTitle(`Current price of ${ticker} in USD`)
+    .addFields(
+        { name: ticker, value: inUSD },
+    )
+    .setImage(logo_file)
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('xrpl-token')
@@ -38,17 +46,8 @@ module.exports = {
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    
-                    const embedToken = new EmbedBuilder()
-                        .setColor('RANDOM')
-                        .setTitle(`Current price of ${ticker} in USD`)
-                        .addFields(
-                            { name: ticker, value: inUSD },
-                        )
-                        .setImage(logo_file)
-                    }
-
                     interaction.edit({ embeds: [embedToken]});
+                }
             }).catch(err => {
                 interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
             });
