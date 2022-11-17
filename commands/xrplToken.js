@@ -45,29 +45,37 @@ module.exports = {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
-                    const inXRP = res.data.pairs[0].last;
-                    var inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                    
+                    //const inXRP = res.data.pairs[0].last;
+                    //var inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                    
                     //console.log("Current XRP price: " + inXRP);
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    console.log(`User tag: ${client.user.tag}`);
-                    console.log(`User avatar URL: ${client.user.avatarURL()}`)
-                    console.log(`User username: ${client.user.username}`);
+                    //console.log(`User tag: ${client.user.tag}`);
+                    //console.log(`User avatar URL: ${client.user.avatarURL()}`)
+                    //console.log(`User username: ${client.user.username}`);
 
-                    console.log(numOfTokens[2].name);
-                    console.log(inUSD);
+                    //console.log(numOfTokens[2].name);
+                    //console.log(inUSD);
 
                     function createEmbedFields(numArray) {
-                        console.log(inUSD);
+                        //console.log(inUSD);
                         let embedFields = [];
                         let num = 0;
+                        console.log(num);
                         while (num < numArray) {
-                            console.log(num);
-                            console.log(numOfTokens[num].name);
-                            console.log(inUSD);
+                            //console.log(num);
+                            //console.log(numOfTokens[num].name);
+                            //console.log(inUSD);
                             //embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
+                            let inXRP = res.data.pairs[num].last;
+                            let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                            console.log(inXRP);
+                            console.log(inUSD);
                             embedFields.push({ name: 'ticker', value: 'inUSD' });
                             num++
+                            console.log(num);
                         }
                         return embedFields;
                     }
