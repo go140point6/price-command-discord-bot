@@ -43,6 +43,8 @@ module.exports = {
 
         console.log(numOfTokens);
 
+        console.log(numOfTokens.keys);
+
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
