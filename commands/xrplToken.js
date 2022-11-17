@@ -41,14 +41,14 @@ module.exports = {
             numOfTokens.push(result)
         }
 
-        console.log(numOfTokens[2]);
+        console.log(numOfTokens[2].name);
 
         function createEmbedFields(numArray) {
             let embedFields = [];
             let num = 0;
             while (num < numArray) {
-
-                embedFields.push({ name: 'ticker', value: 'inUSD' });
+                
+                //embedFields.push({ name: 'ticker', value: 'inUSD' });
                 num++
             }
             return embedFields;
