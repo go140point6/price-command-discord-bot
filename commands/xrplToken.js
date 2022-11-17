@@ -51,7 +51,7 @@ module.exports = {
                             //{ name: 'Ping', value: 'Pong!'},
                             { name: ticker, value: inUSD },
                         )
-                        //.setImage(`${logo_file}`);
+                        .setImage('https://www.onthedex.live/tokens/logo/solo_rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz.svg');
                     /*
                     const embedPing = new EmbedBuilder()
                         .setTitle('Ping!')
