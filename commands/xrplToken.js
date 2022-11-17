@@ -42,6 +42,7 @@ module.exports = {
         }
 
         let numArray = results5.length;
+        console.log(numArray);
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
@@ -50,7 +51,7 @@ module.exports = {
                     let num = 0;
                     let embedFields = [];
                     while (num < numArray) {
-                        console.log(num);
+                        console.log("while: " + num);
                         let inXRP = res.data.pairs[num].last;
                         let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                         console.log(inUSD);
