@@ -35,6 +35,8 @@ module.exports = {
         console.log(name);
         console.log(logo_file);
 
+        console.log(results5);
+
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
@@ -53,7 +55,7 @@ module.exports = {
                         .setColor('DarkRed')
                         .setTitle(`Welcome to The Terminal`)
                         .setAuthor({ name: client.user.username })
-                        .setDescription('Your query produced the following results:')
+                        .setDescription(`The query results for ${ticker}`)
                         .setThumbnail(client.user.avatarURL())
                         .addFields(
                             { name: ticker, value: inUSD },
