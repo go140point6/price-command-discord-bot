@@ -70,7 +70,7 @@ module.exports = {
                         .addFields(
                             { name: ticker, value: inUSD },
                             { name: ticker, value: inUSD },
-                            `${test}`,
+                            test,
                             { name: 'Inline field title', value: 'Some value here', inline: true },
                             { name: 'Inline field title', value: 'Some value here', inline: true },
                         )
