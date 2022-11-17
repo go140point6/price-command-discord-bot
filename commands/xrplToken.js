@@ -45,7 +45,7 @@ module.exports = {
                     //console.log("Current XRP price in USD: " + inUSD);
                     //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
                     console.log(`User tag: ${client.user.tag}`);
-                    console.log(`User avatar URL: ${client.user.displayAvatarURL}`)
+                    console.log(`User avatar URL: ${client.user.avatarURL}`)
                     console.log(`User username: ${client.user.username}`);
 
 
@@ -54,7 +54,7 @@ module.exports = {
                         .setTitle(`Welcome to The Terminal`)
                         .setAuthor({ name: client.user.username })
                         .setDescription('This is the description field')
-                        .setThumbnail(client.user.displayAvatarURL)
+                        .setThumbnail(client.user.avatarURL)
                         .addFields(
                             { name: ticker, value: inUSD },
                             { name: ticker, value: inUSD },
