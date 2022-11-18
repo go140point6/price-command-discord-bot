@@ -52,6 +52,7 @@ module.exports = {
             let issuer = results5[num].issuer;
             console.log(currency);
             console.log(issuer);
+            num++;
         }
 
         process.exit();
