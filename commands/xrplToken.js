@@ -37,11 +37,9 @@ module.exports = {
 
         let numOfTokens = [];
         console.log(results5);
-        let jojo = 1;
         for (const result of results5) {
             numOfTokens.push(result)
-            jojo++
-            console.log(jojo);
+            console.log(result);
         }
 
         console.log(numOfTokens);
