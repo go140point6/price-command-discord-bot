@@ -26,7 +26,8 @@ module.exports = {
     
             var num = 0;
             var embedFields = [];
-            if (results5.length >= 1) { 
+            if (results5.length >= 1) {
+                try { 
                 while (num < results5.length) {
                     var id = results5[num].id;
                     console.log(id)                    
@@ -56,47 +57,11 @@ module.exports = {
                         .setFooter({ text: 'Powered by CoinGecko', iconURL: 'https://images2.imgbox.com/5f/85/MaZQ6yi0_o.png' });
     
                         interaction.editReply({ embeds: [embedToken]});
-                } else {
+                } catch(err) {
+                    console.error(err);
+                    }
+            } else {
                 interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
             }
         }
     };
-    /*        
-                await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`).then(res => {
-                    if(res.data) {
-                        var symbol = res.data.symbol
-                        var name = res.data.name
-                        var price = res.data.market_data.current_price.usd
-                        //var image = res.data.image.small
-                        console.log(symbol)
-                        console.log(name)
-                        console.log(price)
-                        //console.log(image)
-                        //embedFields.push({ name: name, value: price });
-                        embedFields.push({ name: "jojo", value: "100" });
-                        }
-                    }).catch(err => {
-                        interaction.editReply({ content: err});
-                    });
-                    num++;
-                }
-                let fields = embedFields;
-
-                const embedToken = new EmbedBuilder()
-                    .setColor('DarkGreen')
-                    .setTitle(`Welcome to The Terminal`)
-                    //.setAuthor({ name: client.user.username })
-                    .setDescription(`The query results for ${ticker}:`)
-                    //.setThumbnail(client.user.avatarURL())
-                    .addFields(fields)
-                    //.setImage(image)
-                    .setTimestamp()
-                    //.setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
-
-                    interaction.editReply({ embeds: [embedToken]});
-            } else {
-            interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
-        }
-    }
-};
-*/
