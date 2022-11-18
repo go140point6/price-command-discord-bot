@@ -52,13 +52,12 @@ module.exports = {
             while (num < results5.length) {
                 let currency = results5[num].currency;
                 let issuer = results5[num].issuer;
-                if (results5[num].name == null || results5[num].name == undefined) {
-                    let name = results5[num].currency;
-                } else {
-                    let name = results5[num].name;
-                }
-                //console.log(currency);
-                //console.log(issuer);
+                let name = results5[num].name;
+                if (name == null) {
+                    name = currency;
+                console.log(currency);
+                console.log(issuer);
+                console.log(name);
                 await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                     if(res.data && res.data.pairs[0].last) {
                         let inXRP = res.data.pairs[0].last;
@@ -95,7 +94,8 @@ module.exports = {
                         );
                     */
                     interaction.editReply({ embeds: [embedToken]});
-        } else {
+            } 
+        }else {
             interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
         }
     }
