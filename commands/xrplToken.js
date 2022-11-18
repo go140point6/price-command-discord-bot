@@ -39,12 +39,12 @@ module.exports = {
         console.log(results5);
         for (const result of results5) {
             numOfTokens.push(result)
-            console.log(result);
+            //console.log(result);
         }
 
-        console.log(numOfTokens);
-
-
+        console.log(numOfTokens[0]);
+        console.log(numOfTokens[1]);
+        console.log(numOfTokens[2]);
         process.exit();
 
 
