@@ -63,7 +63,7 @@ module.exports = {
                     if(res.data && res.data.pairs[0].last) {
                         let inXRP = res.data.pairs[0].last;
                         let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                        embedFields.push({ name: ticker, value: inUSD });
+                        embedFields.push({ curr: currency, value: inUSD, nm: name });
                         //console.log(inXRP);
                         //console.log(inUSD);
                         }
