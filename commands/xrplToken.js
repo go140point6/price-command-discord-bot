@@ -55,6 +55,7 @@ module.exports = {
                 let name = results5[num].name;
                 if (name == null) {
                     name = currency;
+                }
                 console.log(currency);
                 console.log(issuer);
                 console.log(name);
@@ -94,8 +95,7 @@ module.exports = {
                         );
                     */
                     interaction.editReply({ embeds: [embedToken]});
-            } 
-        }else {
+            } else {
             interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
         }
     }
