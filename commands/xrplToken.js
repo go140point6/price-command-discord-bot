@@ -63,10 +63,10 @@ module.exports = {
                             console.log(inUSD);
                     }
                     return embedFields;
+                    createEmbedFields(results5.length);
                 }
             });
             num++;
-            createEmbedFields(results5.length);
             log.console(embedFields);
         }
 
