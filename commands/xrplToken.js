@@ -60,10 +60,10 @@ module.exports = {
                             let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                             console.log(inXRP);
                             console.log(inUSD);
-                            num++;
                     }
                 }
             });
+            num++;
         }
 
         process.exit();
