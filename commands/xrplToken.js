@@ -64,6 +64,8 @@ module.exports = {
                 });
                 num++;
             }
+            return embedFields;
+            console.log(embedFields);
 
 /*
 
