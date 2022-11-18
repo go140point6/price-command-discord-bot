@@ -56,14 +56,14 @@ module.exports = {
                 if (name == null) {
                     name = currency;
                 }
-                console.log(currency);
-                console.log(issuer);
-                console.log(name);
+                //console.log(currency);
+                //console.log(issuer);
+                //console.log(name);
                 await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                     if(res.data && res.data.pairs[0].last) {
                         let inXRP = res.data.pairs[0].last;
                         let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                        embedFields.push({ name: currency, value: inUSD });
+                        embedFields.push({ name: name, value: inUSD });
                         //console.log(inXRP);
                         //console.log(inUSD);
                         }
@@ -73,7 +73,7 @@ module.exports = {
                     num++;
                 }
             //return embedFields;
-                console.log("embedFields: " + embedFields);
+                //console.log("embedFields: " + embedFields);
                 let fields = embedFields;
 
                 const embedToken = new EmbedBuilder()
