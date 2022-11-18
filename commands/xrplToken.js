@@ -52,6 +52,11 @@ module.exports = {
             while (num < results5.length) {
                 let currency = results5[num].currency;
                 let issuer = results5[num].issuer;
+                if (results5[num].name == null || results5[num].name == undefined) {
+                    let name = results5[num].currency;
+                } else {
+                    let name = results5[num].name;
+                }
                 //console.log(currency);
                 //console.log(issuer);
                 await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
@@ -75,7 +80,7 @@ module.exports = {
                     .setColor('DarkRed')
                     .setTitle(`Welcome to The Terminal`)
                     .setAuthor({ name: client.user.username })
-                    .setDescription(`The query results for ${ticker}:`)
+                    .setDescription(`The query results for ${name}:`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields(fields)
                     //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
