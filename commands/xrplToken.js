@@ -47,8 +47,8 @@ module.exports = {
         console.log(numOfTokens[2]);
         
         let num = 0;
-        let embedFields = [];
         while (num < results5.length) {
+            let embedFields = [];
             let currency = results5[num].currency;
             let issuer = results5[num].issuer;
             console.log(currency);
@@ -62,11 +62,12 @@ module.exports = {
                             console.log(inXRP);
                             console.log(inUSD);
                     }
-                    
+                    return embedFields;
                 }
             });
             num++;
             createEmbedFields(results5.length);
+            log.console(embedFields);
         }
 
         process.exit();
