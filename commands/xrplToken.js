@@ -69,7 +69,7 @@ module.exports = {
                             //console.log(numOfTokens[num].name);
                             //console.log(inUSD);
                             //embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
-                            let inXRP = res.data.pairs[num].last;
+                            let inXRP = res.data.pairs[`${num}`].last;
                             let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                             console.log(inXRP);
                             console.log(inUSD);
