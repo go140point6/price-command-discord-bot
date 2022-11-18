@@ -40,7 +40,7 @@ module.exports = {
         //for (const result of results5) {
         //    numOfTokens.push(result)
         //}
-        process.exit;
+        process.exit();
 
 
 
