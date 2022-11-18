@@ -29,6 +29,7 @@ module.exports = {
         if (results5.length >= 1) {
             while (num < results5.length) {
                 var id = results5[num].id;
+                console.log(id)
                 //var symbol = results5[num].symbol;
                 //var name = results5[num].;
                 //if (name == null) {
@@ -36,16 +37,16 @@ module.exports = {
                 //}
                 await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`).then(res => {
                     if(res.data) {
-                        var symbol = res.data[0].symbol
-                        var name = res.data[0].name
-                        var price = res.data[0].market_data.current_price.usd
-                        var image = res.data[0].image.small
+                        var symbol = res.data.symbol
+                        var name = res.data.name
+                        var price = res.data.market_data.current_price.usd
+                        var image = res.data.image.small
                         console.log(symbol)
                         console.log(name)
                         console.log(price)
                         console.log(image)
 
-                        //embedFields.push({ name: name, value: price });
+                        embedFields.push({ name: name, value: price });
                         }
                     }).catch(err => {
                         interaction.editReply({ content: err});
