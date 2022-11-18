@@ -47,8 +47,8 @@ module.exports = {
         console.log(numOfTokens[2]);
         
         let num = 0;
+        let embedFields = [];
         while (num < results5.length) {
-            let embedFields = [];
             let currency = results5[num].currency;
             let issuer = results5[num].issuer;
             console.log(currency);
