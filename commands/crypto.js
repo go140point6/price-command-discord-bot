@@ -29,11 +29,12 @@ module.exports = {
             if (results5.length >= 1) {
                 while (num < results5.length) {
                     var id = results5[num].id;
-                    var name = results5[num].name;
                     console.log(id)                    
                     await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`).then(res => {
                         if(res.data) {
-                            embedFields.push({ name: name, value: 'juju' });
+                            var name = res.data.name;
+                            var price = res.data.market_data.current_price.usd;
+                            embedFields.push({ name: name, value: price });
                             //embedFields.push({ name: 'jojo', value: 'juju' });
                             }
                         }).catch(err => {
@@ -44,7 +45,7 @@ module.exports = {
                     //let fields = embedFields;
     
                     const embedToken = new EmbedBuilder()
-                        .setColor('DarkRed')
+                        .setColor('DarkGreen')
                         .setTitle(`Welcome to The Terminal`)
                         .setAuthor({ name: client.user.username })
                         .setDescription(`The query results for ${ticker}:`)
