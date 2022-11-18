@@ -41,11 +41,6 @@ module.exports = {
                         var name = res.data.name
                         var price = res.data.market_data.current_price.usd
                         var image = res.data.image.small
-                        console.log(symbol)
-                        console.log(name)
-                        console.log(price)
-                        console.log(image)
-
                         embedFields.push({ name: name, value: price });
                         }
                     }).catch(err => {
@@ -59,7 +54,7 @@ module.exports = {
                     .setColor('DarkGreen')
                     .setTitle(`Welcome to The Terminal`)
                     .setAuthor({ name: client.user.username })
-                    .setDescription(`The query results for ${symbol}:`)
+                    .setDescription(`The query results for ${ticker}:`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields(fields)
                     .setImage(image)
