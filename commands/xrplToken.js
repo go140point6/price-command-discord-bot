@@ -57,7 +57,7 @@ module.exports = {
                 if(res.data && res.data.pairs[0].last) {
                     let inXRP = res.data.pairs[0].last;
                     let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                    embedFields.push({ name: 'ticker', value: 'inUSD' });
+                    embedFields.push({ name: ticker, value: inUSD });
                     console.log(inXRP);
                     console.log(inUSD);
                     }
@@ -70,23 +70,16 @@ module.exports = {
             console.log("embedFields: " + embedFields);
             let fields = embedFields;
 
-                    const embedToken = new EmbedBuilder()
-                        .setColor('DarkRed')
-                        .setTitle(`Welcome to The Terminal`)
-                        .setAuthor({ name: client.user.username })
-                        .setDescription(`The query results for ${ticker}:`)
-                        .setThumbnail(client.user.avatarURL())
-                        .addFields(
-                            fields
-                            //{ name: ticker, value: inUSD },
-                            //{ name: ticker, value: inUSD },
-                            //{ name: ticker, value: inUSD },
-                            //{ name: 'Inline field title', value: 'Some value here', inline: true },
-                            //{ name: 'Inline field title', value: 'Some value here', inline: true },
-                        )
-                        .setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
-                        .setTimestamp()
-                        .setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
+            const embedToken = new EmbedBuilder()
+                .setColor('DarkRed')
+                .setTitle(`Welcome to The Terminal`)
+                .setAuthor({ name: client.user.username })
+                .setDescription(`The query results for ${ticker}:`)
+                .setThumbnail(client.user.avatarURL())
+                .addFields(fields)
+                .setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                .setTimestamp()
+                .setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
 
                     /*
                     const embedPing = new EmbedBuilder()
