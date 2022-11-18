@@ -47,8 +47,8 @@ module.exports = {
         console.log(numOfTokens[2]);
         
         let num = 0;
+        let embedFields = [];
         while (num < results5.length) {
-            let embedFields = [];
             let currency = results5[num].currency;
             let issuer = results5[num].issuer;
             console.log(currency);
@@ -58,13 +58,15 @@ module.exports = {
                     function createEmbedFields(numArray) {
                             let inXRP = res.data.pairs[0].last;
                             let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                            embedFields.push({ name: 'ticker', value: 'inUSD' });
                             console.log(inXRP);
                             console.log(inUSD);
                     }
-                    createEmbedFields(results5.length);
+                    
                 }
             });
             num++;
+            createEmbedFields(results5.length);
         }
 
         process.exit();
