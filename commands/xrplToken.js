@@ -67,7 +67,7 @@ module.exports = {
                 }
             });
             num++;
-            log.console(embedFields);
+            console.log(embedFields);
         }
 
         process.exit();
