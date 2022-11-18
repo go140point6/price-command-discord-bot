@@ -29,11 +29,12 @@ module.exports = {
             if (results5.length >= 1) {
                 while (num < results5.length) {
                     var id = results5[num].id;
+                    var name = results5[num].name;
                     console.log(id)                    
                     await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`).then(res => {
                         if(res.data) {
-                            //embedFields.push({ name: name, value: price });
-                            embedFields.push({ name: 'jojo', value: 'juju' });
+                            embedFields.push({ name: name, value: 'juju' });
+                            //embedFields.push({ name: 'jojo', value: 'juju' });
                             }
                         }).catch(err => {
                             interaction.editReply({ content: err});
