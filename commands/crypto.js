@@ -34,6 +34,8 @@ module.exports = {
                         if(res.data) {
                             var name = res.data.name;
                             var price = res.data.market_data.current_price.usd;
+                            console.log(name);
+                            console.log(price);
                             //embedFields.push({ name: name, value: price });
                             embedFields.push({ name: 'jojo', value: 'juju' });
                             }
