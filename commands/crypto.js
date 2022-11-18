@@ -41,6 +41,10 @@ module.exports = {
                         var name = res.data.name
                         var price = res.data.market_data.current_price.usd
                         var image = res.data.image.small
+                        console.log(symbol)
+                        console.log(name)
+                        console.log(price)
+                        console.log(image)
                         embedFields.push({ name: name, value: price });
                         }
                     }).catch(err => {
