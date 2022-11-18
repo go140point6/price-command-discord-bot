@@ -50,7 +50,7 @@ module.exports = {
                 let fields = embedFields;
 
                 const embedToken = new EmbedBuilder()
-                    .setColor('DarkPurple')
+                    .setColor('DarkRed')
                     .setTitle(`Welcome to The Terminal`)
                     .setAuthor({ name: client.user.username })
                     .setDescription(`The query results for ${currency}:`)

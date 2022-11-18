@@ -1,17 +1,18 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 const Database = require('better-sqlite3');
+const client = require('../index');
 
 const db = new Database('./data/data.db');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('crypto-price')
+        .setName('crupto-price')
         .setDescription('Coin Gecko reported price in USD')
         .addStringOption((option) =>
             option
                 .setName("ticker")
-                .setDescription("Common ticker (symbol) of cryptocurrency to lookup i.e. XRP.")
+                .setDescription("Common ticker (currency) of cryptocurrency to lookup i.e. XRP.")
                 .setRequired(true)
         ),
     async execute(interaction) {
@@ -23,20 +24,44 @@ module.exports = {
 
         console.log("Number in array for " + ticker + " is " + results5.length);
 
-        if (Array.isArray(results5) && results5.length == 1) {
-            //console.log("Array exists and has exactly 1 item");
-            let id = results5[0].id;
-            await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`).then(res => {
-                //if(res.data && res.data.id.usd) {
-                    let result = res.data[id].usd;
-                    interaction.editReply({ content: `Current price of ${ticker} is USD ${result}` });
+        let num = 0;
+        let embedFields = [];
+        if (results5.length >= 1) {
+            while (num < results5.length) {
+                var id = results5[num].id;
+                //var symbol = results5[num].symbol;
+                //var name = results5[num].;
+                //if (name == null) {
+                //    name = currency;
                 //}
-            }).catch(err => {
-                interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
-            });
-        } else if (Array.isArray(results5) && results5.length > 1) {
-            interaction.editReply({ content: `Found more than one ${ticker} in database and I am not fully programmed for that yet.` });
-        } else {
+                await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`).then(res => {
+                    if(res.data) {
+                        var symbol = res.data[0].symbol
+                        var name = res.data[0].name
+                        var price = res.data[0].market_data.current_price.usd
+                        var image = res.data[0].image.small
+                        embedFields.push({ name: name, value: price });
+                        }
+                    }).catch(err => {
+                        interaction.editReply({ content: err});
+                    });
+                    num++;
+                }
+                let fields = embedFields;
+
+                const embedToken = new EmbedBuilder()
+                    .setColor('DarkGreen')
+                    .setTitle(`Welcome to The Terminal`)
+                    .setAuthor({ name: client.user.username })
+                    .setDescription(`The query results for ${symbol}:`)
+                    .setThumbnail(client.user.avatarURL())
+                    .addFields(fields)
+                    .setImage(image)
+                    .setTimestamp()
+                    //.setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
+
+                    interaction.editReply({ embeds: [embedToken]});
+            } else {
             interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
         }
     }
