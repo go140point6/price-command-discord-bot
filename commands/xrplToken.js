@@ -48,11 +48,22 @@ module.exports = {
         
         let num = 0;
         while (num < results5.length) {
+            let embedFields = [];
             let currency = results5[num].currency;
             let issuer = results5[num].issuer;
             console.log(currency);
             console.log(issuer);
-            num++;
+            await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
+                if(res.data && res.data.pairs[0].last) {
+                    function createEmbedFields(numArray) {
+                            let inXRP = res.data.pairs[0].last;
+                            let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                            console.log(inXRP);
+                            console.log(inUSD);
+                            num++;
+                    }
+                }
+            });
         }
 
         process.exit();
