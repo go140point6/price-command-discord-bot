@@ -38,14 +38,14 @@ module.exports = {
                 await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`).then(res => {
                     if(res.data) {
                         var symbol = res.data.symbol
-                        var cgName = res.data.name
+                        var name = res.data.name
                         var price = res.data.market_data.current_price.usd
                         var image = res.data.image.small
                         console.log(symbol)
                         console.log(name)
                         console.log(price)
                         console.log(image)
-                        embedFields.push({ name: cgName, value: price });
+                        embedFields.push({ name: name, value: price });
                         }
                     }).catch(err => {
                         interaction.editReply({ content: err});
