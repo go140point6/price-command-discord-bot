@@ -33,22 +33,16 @@ module.exports = {
                     await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`).then(res => {
                         if(res.data) {
                             var name = res.data.name;
-                            if (res.data.market_data.current_price.usd == null) {
-                                var price = "0"
-                            } else {
-                                var price = (res.data.market_data.current_price.usd).toString();
-                            }
-                            console.log(name);
-                            console.log(price);
-                            embedFields.push({ name: name, value: price });
-                            //embedFields.push({ name: 'jojo', value: 'juju' });
+                            var price = (res.data.market_data.current_price.usd).toString();
+                            if (price !== null) {
+                                embedFields.push({ name: name, value: price });
+                                }
                             }
                         }).catch(err => {
-                            interaction.editReply({ content: err});
+                            interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
                         });
                         num++;
                     }
-                    //let fields = embedFields;
     
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkGreen')
@@ -59,7 +53,7 @@ module.exports = {
                         .addFields(embedFields)
                         //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                         .setTimestamp()
-                        //.setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
+                        .setFooter({ text: 'Powered by CoinGecko', iconURL: 'https://images2.imgbox.com/5f/85/MaZQ6yi0_o.png' });
     
                         interaction.editReply({ embeds: [embedToken]});
                 } else {
