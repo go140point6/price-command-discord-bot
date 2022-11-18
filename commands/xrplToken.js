@@ -29,6 +29,7 @@ module.exports = {
         let num = 0;
         let embedFields = [];
         if (results5.length >= 1) {
+            try {
             while (num < results5.length) {
                 var currency = results5[num].currency;
                 var issuer = results5[num].issuer;
@@ -40,7 +41,7 @@ module.exports = {
                     if(res.data && res.data.pairs[0].last) {
                         let inXRP = res.data.pairs[0].last;
                         let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                        embedFields.push({ name: name, value: inUSD });
+                        embedFields.push({ name: name, value: 0 });
                         }
                     }).catch(err => {
                         interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
@@ -60,6 +61,10 @@ module.exports = {
                     .setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
 
                     interaction.editReply({ embeds: [embedToken]});
+            } catch(err) {
+                console.error(err);
+                interaction.editReply({ content: `Some error building embed, please try again or ping my overseer.`});
+                }                    
             } else {
             interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
         }

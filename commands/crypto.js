@@ -35,7 +35,7 @@ module.exports = {
                         if(res.data) {
                             var name = res.data.name;
                             if (res.data.market_data.current_price.usd !== undefined) {
-                                var price = (res.data.market_data.current_price.usd)//.toString();
+                                var price = (res.data.market_data.current_price.usd).toString();
                                 embedFields.push({ name: name, value: price });
                                 } 
                             }
