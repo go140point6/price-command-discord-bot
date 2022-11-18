@@ -36,8 +36,9 @@ module.exports = {
                             var price = res.data.market_data.current_price.usd;
                             console.log(name);
                             console.log(price);
-                            embedFields.push({ name: name, value: 'juju' });
-                            embedFields.push({ name: 'jojo', value: 'juju' });
+                            embedFields.push({ name: 'jojo', value: price });
+                            //embedFields.push({ name: name, value: 'juju' });
+                            //embedFields.push({ name: 'jojo', value: 'juju' });
                             }
                         }).catch(err => {
                             interaction.editReply({ content: err});
