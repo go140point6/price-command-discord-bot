@@ -52,7 +52,7 @@ module.exports = {
             while (num < results5.length) {
                 let currency = results5[num].currency;
                 let issuer = results5[num].issuer;
-                let name = results5[num].name;
+                var name = results5[num].name;
                 if (name == null) {
                     name = currency;
                 }
@@ -63,7 +63,7 @@ module.exports = {
                     if(res.data && res.data.pairs[0].last) {
                         let inXRP = res.data.pairs[0].last;
                         let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                        embedFields.push({ curr: currency, value: inUSD, nm: name });
+                        embedFields.push({ name: currency, value: inUSD });
                         //console.log(inXRP);
                         //console.log(inUSD);
                         }
