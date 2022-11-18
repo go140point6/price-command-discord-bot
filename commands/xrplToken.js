@@ -61,6 +61,7 @@ module.exports = {
                             console.log(inXRP);
                             console.log(inUSD);
                     }
+                    createEmbedFields(results5.length);
                 }
             });
             num++;
