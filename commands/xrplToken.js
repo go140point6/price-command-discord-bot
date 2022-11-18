@@ -26,14 +26,14 @@ module.exports = {
         console.log("Current XRP price is $" + XRP.currentXRP);
         console.log("Number in array for " + ticker + " is " + results5.length);
 
-        let currency = results5[0].currency;
-        let issuer = results5[0].issuer;
-        let name = results5[0].name;
-        let logo_file = results5[0].logo_file;
-        console.log(currency);
-        console.log(issuer);
-        console.log(name);
-        console.log(logo_file);
+        //let currency = results5[0].currency;
+        //let issuer = results5[0].issuer;
+        //let name = results5[0].name;
+        //let logo_file = results5[0].logo_file;
+        //console.log(currency);
+        //console.log(issuer);
+        //console.log(name);
+        //console.log(logo_file);
 
         let numOfTokens = [];
         console.log(results5);
