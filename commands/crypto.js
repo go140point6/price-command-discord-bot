@@ -59,6 +59,7 @@ module.exports = {
                         interaction.editReply({ embeds: [embedToken]});
                 } catch(err) {
                     console.error(err);
+                    interaction.editReply({ content: `Some error building embed, please try again or ping my overseer.`});
                     }
             } else {
                 interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
