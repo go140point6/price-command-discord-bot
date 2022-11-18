@@ -41,7 +41,7 @@ module.exports = {
                     if(res.data && res.data.pairs[0].last) {
                         let inXRP = res.data.pairs[0].last;
                         let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                        embedFields.push({ name: name, value: 0 });
+                        embedFields.push({ name: name, value: inUSD });
                         }
                     }).catch(err => {
                         interaction.editReply({ content: `Some error with api call, please try again or ping my overseer.`});
