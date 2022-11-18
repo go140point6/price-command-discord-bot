@@ -7,7 +7,7 @@ const db = new Database('./data/data.db');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('crupto-price')
+        .setName('crypto-price')
         .setDescription('Coin Gecko reported price in USD')
         .addStringOption((option) =>
             option
