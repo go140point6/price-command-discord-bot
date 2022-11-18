@@ -50,8 +50,8 @@ module.exports = {
         let embedFields = [];
         if (results5.length >= 1) {
             while (num < results5.length) {
-                let currency = results5[num].currency;
-                let issuer = results5[num].issuer;
+                var currency = results5[num].currency;
+                var issuer = results5[num].issuer;
                 var name = results5[num].name;
                 if (name == null) {
                     name = currency;
