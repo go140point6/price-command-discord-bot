@@ -45,9 +45,16 @@ module.exports = {
         console.log(numOfTokens[0]);
         console.log(numOfTokens[1]);
         console.log(numOfTokens[2]);
+        
+        let num = 0;
+        while (num < results5.length) {
+            let currency = results5[num].currency;
+            let issuer = results5[num].issuer;
+            console.log(currency);
+            console.log(issuer);
+        }
+
         process.exit();
-
-
 
         //if (Array.isArray(results5) && results5.length == 1) {
             //console.log("Array exists and has exactly 1 item");
