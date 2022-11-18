@@ -37,9 +37,13 @@ module.exports = {
 
         let numOfTokens = [];
         console.log(results5);
-        //for (const result of results5) {
-        //    numOfTokens.push(result)
-        //}
+        for (const result of results5) {
+            numOfTokens.push(result)
+        }
+
+        console.log(numOfTokens);
+
+
         process.exit();
 
 
