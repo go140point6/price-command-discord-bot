@@ -40,7 +40,12 @@ module.exports = {
                         var name = res.data[0].name
                         var price = res.data[0].market_data.current_price.usd
                         var image = res.data[0].image.small
-                        embedFields.push({ name: name, value: price });
+                        console.log(symbol)
+                        console.log(name)
+                        console.log(price)
+                        console.log(image)
+
+                        //embedFields.push({ name: name, value: price });
                         }
                     }).catch(err => {
                         interaction.editReply({ content: err});
