@@ -40,11 +40,11 @@ module.exports = {
                         var symbol = res.data.symbol
                         var name = res.data.name
                         var price = res.data.market_data.current_price.usd
-                        var image = res.data.image.small
+                        //var image = res.data.image.small
                         console.log(symbol)
                         console.log(name)
                         console.log(price)
-                        console.log(image)
+                        //console.log(image)
                         embedFields.push({ name: name, value: price });
                         }
                     }).catch(err => {
@@ -61,7 +61,7 @@ module.exports = {
                     .setDescription(`The query results for ${ticker}:`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields(fields)
-                    .setImage(image)
+                    //.setImage(image)
                     .setTimestamp()
                     //.setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
 
