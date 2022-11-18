@@ -61,71 +61,14 @@ module.exports = {
                     console.log(inXRP);
                     console.log(inUSD);
                     }
+                }).catch(err => {
+                    interaction.editReply({ content: err});
                 });
                 num++;
             }
             //return embedFields;
-            console.log("embedFields: " + embedFields.toJSON());
-
-
-
-/*
-
-
-
-
-
-                    //return embedFields;
-                    createEmbedFields(results5.length);
-                }
-            });
-            num++;
-            console.log(embedFields);
-        }
-*/
-        process.exit();
-
-        //if (Array.isArray(results5) && results5.length == 1) {
-            //console.log("Array exists and has exactly 1 item");
-            await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
-                if(res.data && res.data.pairs[0].last) {
-                    
-                    //const inXRP = res.data.pairs[0].last;
-                    //var inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                    
-                    //console.log("Current XRP price: " + inXRP);
-                    //console.log("Current XRP price in USD: " + inUSD);
-                    //interaction.editReply({ content: `Current price of ${ticker} is USD ${inUSD}` });
-                    //console.log(`User tag: ${client.user.tag}`);
-                    //console.log(`User avatar URL: ${client.user.avatarURL()}`)
-                    //console.log(`User username: ${client.user.username}`);
-
-                    //console.log(numOfTokens[2].name);
-                    //console.log(inUSD);
-
-                    function createEmbedFields(numArray) {
-                        //console.log(inUSD);
-                        let embedFields = [];
-                        let num = 0;
-                        console.log(num);
-                        while (parseInt(num) < numArray) {
-                            //console.log(num);
-                            //console.log(numOfTokens[num].name);
-                            //console.log(inUSD);
-                            //embedFields.push({ name: numOfTokens[num].name, value: numOfTokens[num].inUSD})
-                            //let inXRP = res.data.pairs[`${num}`].last;
-                            let inXRP = res.data.pairs[0].last;
-                            let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                            console.log(inXRP);
-                            console.log(inUSD);
-                            //embedFields.push({ name: 'ticker', value: 'inUSD' });
-                            num++
-                            console.log(num);
-                        }
-                        return embedFields;
-                    }
-            
-                    let fields = createEmbedFields(results5.length);
+            console.log("embedFields: " + embedFields);
+            let fields = embedFields;
 
                     const embedToken = new EmbedBuilder()
                         .setColor('DarkRed')
@@ -153,10 +96,10 @@ module.exports = {
                         );
                     */
                     interaction.editReply({ embeds: [embedToken]});
-                }
-            }).catch(err => {
-                interaction.editReply({ content: err});
-            });
+                //}
+            //}).catch(err => {
+            //    interaction.editReply({ content: err});
+            //});
         //} else if (Array.isArray(results5) && results5.length > 1) {
         //    interaction.editReply({ content: `Found more than one ${ticker} in database and I am not fully programmed for that yet.` });
         //} else {
