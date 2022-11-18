@@ -24,9 +24,9 @@ module.exports = {
     
             console.log("Number in array for " + ticker + " is " + results5.length);
     
-            let num = 0;
-            if (results5.length >= 1) {
-                let embedFields = [];
+            var num = 0;
+            var embedFields = [];
+            if (results5.length >= 1) { 
                 while (num < results5.length) {
                     var id = results5[num].id;
                     console.log(id)                    
