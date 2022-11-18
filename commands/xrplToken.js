@@ -73,7 +73,7 @@ module.exports = {
                             let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                             console.log(inXRP);
                             console.log(inUSD);
-                            embedFields.push({ name: 'ticker', value: 'inUSD' });
+                            //embedFields.push({ name: 'ticker', value: 'inUSD' });
                             num++
                             console.log(num);
                         }
