@@ -33,7 +33,11 @@ module.exports = {
                     await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`).then(res => {
                         if(res.data) {
                             var name = res.data.name;
-                            var price = (res.data.market_data.current_price.usd).toString();
+                            if (res.data.market_data.current_price.usd == null) {
+                                var price = "0"
+                            } else {
+                                var price = (res.data.market_data.current_price.usd).toString();
+                            }
                             console.log(name);
                             console.log(price);
                             embedFields.push({ name: name, value: price });
