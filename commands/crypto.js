@@ -61,7 +61,7 @@ module.exports = {
                     .setDescription(`The query results for ${ticker}:`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields(fields)
-                    .setImage(image)
+                    //.setImage(image)
                     .setTimestamp()
                     //.setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
 
