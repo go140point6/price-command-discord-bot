@@ -26,17 +26,6 @@ module.exports = {
         console.log("Current XRP price is $" + XRP.currentXRP);
         console.log("Number in array for " + ticker + " is " + results5.length);
 
-/*        let numOfTokens = [];
-        //console.log(results5);
-        for (const result of results5) {
-            numOfTokens.push(result)
-            //console.log(result);
-        }
-*/
-        //console.log(numOfTokens[0]);
-        //console.log(numOfTokens[1]);
-        //console.log(numOfTokens[2]);
-        
         let num = 0;
         let embedFields = [];
         if (results5.length >= 1) {
@@ -47,28 +36,21 @@ module.exports = {
                 if (name == null) {
                     name = currency;
                 }
-                //console.log(currency);
-                //console.log(issuer);
-                //console.log(name);
                 await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                     if(res.data && res.data.pairs[0].last) {
                         let inXRP = res.data.pairs[0].last;
                         let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
                         embedFields.push({ name: name, value: inUSD });
-                        //console.log(inXRP);
-                        //console.log(inUSD);
                         }
                     }).catch(err => {
                         interaction.editReply({ content: err});
                     });
                     num++;
                 }
-            //return embedFields;
-                //console.log("embedFields: " + embedFields);
                 let fields = embedFields;
 
                 const embedToken = new EmbedBuilder()
-                    .setColor('DarkRed')
+                    .setColor('DarkPurple')
                     .setTitle(`Welcome to The Terminal`)
                     .setAuthor({ name: client.user.username })
                     .setDescription(`The query results for ${currency}:`)
@@ -78,13 +60,6 @@ module.exports = {
                     .setTimestamp()
                     //.setFooter({ text: 'Some footer text here', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg' });
 
-                    /*
-                    const embedPing = new EmbedBuilder()
-                        .setTitle('Ping!')
-                        .addFields(
-                            { name: 'Ping', value: 'Pong!'},
-                        );
-                    */
                     interaction.editReply({ embeds: [embedToken]});
             } else {
             interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
