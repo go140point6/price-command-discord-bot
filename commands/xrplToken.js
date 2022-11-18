@@ -55,21 +55,30 @@ module.exports = {
             console.log(issuer);
             await axios.get(`https://api.onthedex.live/public/v1/ticker/${currency}.${issuer}:XRP`).then(res => {
                 if(res.data && res.data.pairs[0].last) {
-                    function createEmbedFields(numArray) {
-                            let inXRP = res.data.pairs[0].last;
-                            let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
-                            embedFields.push({ name: 'ticker', value: 'inUSD' });
-                            console.log(inXRP);
-                            console.log(inUSD);
+                    let inXRP = res.data.pairs[0].last;
+                    let inUSD = (inXRP * XRP.currentXRP).toFixed(6);
+                    embedFields.push({ name: 'ticker', value: 'inUSD' });
+                    console.log(inXRP);
+                    console.log(inUSD);
                     }
-                    return embedFields;
+                });
+                num++;
+            }
+
+/*
+
+
+
+
+
+                    //return embedFields;
                     createEmbedFields(results5.length);
                 }
             });
             num++;
             console.log(embedFields);
         }
-
+*/
         process.exit();
 
         //if (Array.isArray(results5) && results5.length == 1) {
