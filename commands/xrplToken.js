@@ -52,7 +52,7 @@ module.exports = {
                 const embedToken = new EmbedBuilder()
                     .setColor('DarkRed')
                     .setTitle(`Welcome to The Terminal`)
-                    .setAuthor({ name: client.user.username })
+                    //.setAuthor({ name: client.user.username })
                     .setDescription(`The query results for ${currency}:`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields(embedFields)
