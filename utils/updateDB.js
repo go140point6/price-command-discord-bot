@@ -18,7 +18,7 @@ const stmt2 = db.prepare(`
     VALUES (${id}, @currency, @issuer, @name, @logo_file)
     `)
 
-stmt2.run({
+const info = stmt2.run({
     currency: 'JOJO3',
     issuer: 'ryanTAPPWAKA1234cW12Vx97riBu91MDPi',
     name: null,
