@@ -30,7 +30,7 @@ const info = stmt.get({
 
 console.log(info);
 
-/*
+
 const stmt2 = db.prepare(`
     INSERT INTO xrplTokens (id, currency, issuer, name, logo_file)
     VALUES (${id}, @currency, @issuer, @name, @logo_file)
@@ -42,6 +42,7 @@ const stmt2 = db.prepare(`
     SELECT 508, 'JOJO3', 'ryanTAPPWAKA1234cW12Vx97riBu91MDPi',  
     
     `)
+*/
 
 const info2 = stmt2.run({
     currency: 'JOJO4',
@@ -50,9 +51,8 @@ const info2 = stmt2.run({
     logo_file: null
 });
 
-console.log(info.changes);
-console.log(info.lastInsertRowid);
-*/
+console.log(info2.changes);
+console.log(info2.lastInsertRowid);
 
 //var tableXrpl = "xrplTokens";
 //var tableCrypto = "crypto"
