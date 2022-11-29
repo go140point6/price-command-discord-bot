@@ -77,10 +77,17 @@ async function updateTokens() {
             })
 
             if (info == null) {
-                console.log('does not exist')
+                console.log('Adding this pair...')
+                if (token.name == null) {
+                    token.name = null;
+                }
+                if (token.logo_file == null) {
+                    token.logo_file = null;
+                }
+                const info2 = sqlUpdate.run(token)
+                console.log(info2.lastInsertRowid)
             } else {
-                console.log(token.currency)
-                console.log(token.issuer)
+                console.log('This pair exists')
             }
             //console.log(info)
         }
