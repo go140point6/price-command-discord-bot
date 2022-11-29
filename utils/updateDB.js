@@ -9,7 +9,7 @@ let sql = `SELECT * FROM xrplTokens WHERE id = 10`;
 
 console.log(sql);
 
-db.all(sql, [], (err, rows) => {
+db.run(sql, [], (err, rows) => {
     if (err) {
         throw err;
     }
