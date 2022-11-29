@@ -23,7 +23,7 @@ const stmt = db.prepare(`
     SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer
 `)
 
-const info = stmt.run({
+const info = stmt.get({
     currency: 'JOJO4',
     issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi'
 })
