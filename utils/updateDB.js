@@ -22,7 +22,7 @@ async function updateTokens() {
         let id = null;
         const insertXrpl = db.prepare(`
             INSERT INTO xrplTokens (id, currency, issuer, name, logo_file)
-            SELECT currency, issuer
+            SELECT (currency, issuer)
             WHERE NOT EXISTS (SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer) 
             VALUES (${id}, @currency, @issuer, @name, @logo_file)
             
