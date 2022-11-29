@@ -25,7 +25,6 @@ async function updateTokens() {
             SELECT (currency, issuer)
             WHERE NOT EXISTS (SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer) 
             VALUES (${id}, @currency, @issuer, @name, @logo_file)
-            
             `);
 
         const insertManyXrpl = db.transaction((tokens) => {
