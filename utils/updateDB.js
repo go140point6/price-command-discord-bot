@@ -26,6 +26,7 @@ const info = stmt2.run({
 });
 
 console.log(info.changes);
+console.log(info.lastInsertRowid);
 
 //var tableXrpl = "xrplTokens";
 //var tableCrypto = "crypto"
