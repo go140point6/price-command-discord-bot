@@ -73,7 +73,12 @@ async function updateTokens() {
             issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi'
         })
 
-        console.log(info)
+        if (info == null) {
+            console.log('does not exist')
+        } else {
+            console.log('exists')
+        }
+        //console.log(info)
     })
 }
 
