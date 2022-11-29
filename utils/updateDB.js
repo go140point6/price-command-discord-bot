@@ -68,6 +68,8 @@ async function updateTokens() {
             VALUES (${id}, @currency, @issuer, @name, @logo_file)
         `)
 
+        console.log(res.data.tokens)
+
         const info = checkToken.get({
             currency: 'JOJO4',
             issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi'
@@ -94,17 +96,10 @@ async function updateTokens() {
     await axios.get(`https://api.onthedex.live/public/v1/aggregator`).then(res => {
         //console.log(res.data.tokens);
         let id = null;
-        const insertXrpl = db.prepare(`
-            SELECT * FROM xrplTokens
-            WHERE (id = 10)
-        `);
-        /*
+
         const insertXrpl = db.prepare(`
             INSERT INTO xrplTokens (id, currency, issuer, name, logo_file)
-            SELECT currency, issuer
             VALUES (${id}, @currency, @issuer, @name, @logo_file)
-            SELECT (currency, issuer)
-            WHERE NOT EXISTS (SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer) 
             `);
 
         const insertManyXrpl = db.transaction((tokens) => {
