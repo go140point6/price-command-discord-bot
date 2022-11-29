@@ -5,8 +5,21 @@ const Database = require('better-sqlite3');
 
 const db = new Database('../data/data.db', {verbose: console.log });
 
-var tableXrpl = "xrplTokens";
-var tableCrypto = "crypto"
+let sql = `SELECT * FROM xrplTokens WHERE id = 10`;
+
+console.log(sql);
+
+db.all(sql, [], (err, rows) => {
+    if (err) {
+        throw err;
+    }
+    rows.forEach((row) => {
+        console.log(row.currency);
+    });
+});
+
+//var tableXrpl = "xrplTokens";
+//var tableCrypto = "crypto"
 //var fieldsXrpl = "(id INTEGER PRIMARY KEY AUTOINCREMENT, currency TEXT, issuer TEXT, name TEXT, logo_file TEXT)";
 //var fieldsCrypto = "(id TEXT PRIMARY KEY, symbol TEXT, name TEXT)";
 //var sqlXrpl = `CREATE TABLE IF NOT EXISTS ${tableXrpl} ${fieldsXrpl}`;
@@ -16,16 +29,19 @@ var tableCrypto = "crypto"
 //createTableXrpl.run();
 //createTableCrypto.run();
 
+/*
 async function getTokenInfo() {
     const getInfo = db.prepare(`
         SELECT * FROM xrplTokens
         WHERE (id = 10)
     `);
 
+        const info = db.transaction
         getInfo.run()
 }
 
 getTokenInfo()
+*/
 
 /*
 async function updateTokens() {
