@@ -54,7 +54,7 @@ console.log(info2.changes);
 console.log(info2.lastInsertRowid);
 */
 
-async function UpdateTokens() {
+async function updateTokens() {
     await axios.get(`https://api.onthedex.live/public/v1/aggregator`).then(res => {
 
         let id = null
