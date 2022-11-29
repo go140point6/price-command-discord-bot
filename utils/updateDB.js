@@ -59,17 +59,26 @@ async function updateTokens() {
 
         let id = null
 
-        const checkToken = db.prepare(`
+        const sqlCheck = db.prepare(`
             SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer
         `)
 
-        const updateToken = db.prepare(`
+        const sqlUpdate = db.prepare(`
             INSERT INTO xrplTokens (id, currency, issuer, name, logo_file)
             VALUES (${id}, @currency, @issuer, @name, @logo_file)
         `)
 
-        console.log(res.data.tokens)
+        //console.log(res.data.tokens)
 
+        const updateToken = db.transaction((tokens) => {
+            for (const token of tokens) {
+                sqlCheck.get(token)
+                console.log(token.currency)
+                console.log(token.issuer)
+            }
+        })
+
+        /*
         const info = checkToken.get({
             currency: 'JOJO4',
             issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi'
@@ -81,6 +90,7 @@ async function updateTokens() {
             console.log('exists')
         }
         //console.log(info)
+        */
     })
 }
 
