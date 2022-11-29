@@ -18,11 +18,22 @@ console.log(info);
 */
 
 let id = null;
+
+const stmt = db.prepare(`
+    SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer
+`)
+
+const info = stmt.run({
+    currency: 'JOJO4',
+    issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi'
+})
+
+console.log(info);
+
+/*
 const stmt2 = db.prepare(`
     INSERT INTO xrplTokens (id, currency, issuer, name, logo_file)
     VALUES (${id}, @currency, @issuer, @name, @logo_file)
-    SELECT @currency, @issuer
-    WHERE NOT EXISTS (SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer)
     `);
 
 /*
@@ -31,9 +42,8 @@ const stmt2 = db.prepare(`
     SELECT 508, 'JOJO3', 'ryanTAPPWAKA1234cW12Vx97riBu91MDPi',  
     
     `)
-*/
 
-const info = stmt2.run({
+const info2 = stmt2.run({
     currency: 'JOJO4',
     issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi',
     name: null,
@@ -42,6 +52,7 @@ const info = stmt2.run({
 
 console.log(info.changes);
 console.log(info.lastInsertRowid);
+*/
 
 //var tableXrpl = "xrplTokens";
 //var tableCrypto = "crypto"
