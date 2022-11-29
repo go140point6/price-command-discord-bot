@@ -5,11 +5,20 @@ const Database = require('better-sqlite3');
 
 const db = new Database('../data/data.db', {verbose: console.log });
 
-const stmt = db.prepare(`SELECT * FROM xrplTokens WHERE id = ?`);
-const info = stmt.get('10');
+//const stmt = db.prepare(`SELECT * FROM xrplTokens WHERE id = ?`);
+const stmt = db.prepare(`SELECT * FROM xrplTokens`);
+//const info = stmt.get('10');
+const info = stmt.get();
 
 console.log(info);
 
+/*
+let id = null;
+const stmt2 = db.prepare(`
+    INSERT INTO xrplTokens 
+    VALUES (${id}, @currency, @issuer, @name, @logo_file)
+    `)
+*/
 
 //var tableXrpl = "xrplTokens";
 //var tableCrypto = "crypto"
