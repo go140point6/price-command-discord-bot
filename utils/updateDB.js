@@ -6,9 +6,9 @@ const Database = require('better-sqlite3');
 const db = new Database('../data/data.db', {verbose: console.log });
 
 const stmt = db.prepare(`SELECT * FROM xrplTokens WHERE id = ?`);
-const info = stmt.run('10');
+const info = stmt.run(10);
 
-console.log(info);
+//console.log(info);
 
 
 //var tableXrpl = "xrplTokens";
