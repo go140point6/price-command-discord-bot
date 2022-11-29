@@ -77,7 +77,12 @@ async function UpdateTokens() {
     })
 }
 
-updateTokens();
+async function grabTokens() {
+    await updateTokens();
+    console.log('done');
+}
+
+grabTokens();
 
 /*
 async function updateTokens() {
