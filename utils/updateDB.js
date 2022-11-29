@@ -70,27 +70,21 @@ async function updateTokens() {
 
         //console.log(res.data.tokens)
 
-        //const updateToken = db.transaction((tokens) => {
-            for (const token of tokens) {
-                sqlCheck.get(token)
+        for (const token of tokens) {
+            const info = checkToken.get({
+                currency: token.currency,
+                issuer: token.issuer
+            })
+
+            if (info == null) {
+                console.log('does not exist')
+            } else {
                 console.log(token.currency)
                 console.log(token.issuer)
             }
-        //})
-
-        /*
-        const info = checkToken.get({
-            currency: 'JOJO4',
-            issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi'
-        })
-
-        if (info == null) {
-            console.log('does not exist')
-        } else {
-            console.log('exists')
+            //console.log(info)
         }
-        //console.log(info)
-        */
+        
     })
 }
 
