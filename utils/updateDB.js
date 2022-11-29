@@ -19,13 +19,13 @@ const stmt2 = db.prepare(`
     `)
 
 stmt2.run({
-    currency: 'JOJO2',
-    issuer: 'ryanTAPPWAKA6jFRcW12Vx97riBu91MDPi',
+    currency: 'JOJO3',
+    issuer: 'ryanTAPPWAKA1234cW12Vx97riBu91MDPi',
     name: null,
     logo_file: null
 });
 
-console.log(stmt2.changes);
+console.log(info.changes);
 
 //var tableXrpl = "xrplTokens";
 //var tableCrypto = "crypto"
