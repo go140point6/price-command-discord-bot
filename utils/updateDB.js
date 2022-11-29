@@ -71,7 +71,7 @@ async function updateTokens() {
         //console.log(res.data.tokens)
 
         for (const token of res.data.tokens) {
-            const info = sqlToken.get({
+            const info = sqlCheck.get({
                 currency: token.currency,
                 issuer: token.issuer
             })
