@@ -5,18 +5,11 @@ const Database = require('better-sqlite3');
 
 const db = new Database('../data/data.db', {verbose: console.log });
 
-let sql = `SELECT * FROM xrplTokens WHERE id = 10`;
+const stmt = db.prepare(`SELECT * FROM xrplTokens WHERE id = ?`);
+const info = stmt.run('10');
 
-console.log(sql);
+console.log(info);
 
-db.run(sql, [], (err, rows) => {
-    if (err) {
-        throw err;
-    }
-    rows.forEach((row) => {
-        console.log(row.currency);
-    });
-});
 
 //var tableXrpl = "xrplTokens";
 //var tableCrypto = "crypto"
