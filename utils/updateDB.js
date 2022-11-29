@@ -16,12 +16,30 @@ var tableCrypto = "crypto"
 //createTableXrpl.run();
 //createTableCrypto.run();
 
+async function getTokenInfo() {
+    const getInfo = db.prepare(`
+        SELECT * FROM xrplTokens
+        WHERE (id = 10)
+    `);
+
+        getInfo.run()
+}
+
+getTokenInfo()
+
+/*
 async function updateTokens() {
     await axios.get(`https://api.onthedex.live/public/v1/aggregator`).then(res => {
         //console.log(res.data.tokens);
         let id = null;
         const insertXrpl = db.prepare(`
+            SELECT * FROM xrplTokens
+            WHERE (id = 10)
+        `);
+        /*
+        const insertXrpl = db.prepare(`
             INSERT INTO xrplTokens (id, currency, issuer, name, logo_file)
+            SELECT currency, issuer
             VALUES (${id}, @currency, @issuer, @name, @logo_file)
             SELECT (currency, issuer)
             WHERE NOT EXISTS (SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer) 
@@ -47,6 +65,7 @@ async function updateTokens() {
         insertManyXrpl(res.data.tokens);
     });
 };
+*/
 
 /*
 async function getCrypto() {
@@ -66,6 +85,7 @@ async function getCrypto() {
 };
 */
 
+/*
 async function grabTokens() {
     await updateTokens();
     //const stmt = db.prepare("SELECT * FROM xrplTokens");
@@ -78,3 +98,4 @@ async function grabTokens() {
 }
 
 grabTokens();
+*/
