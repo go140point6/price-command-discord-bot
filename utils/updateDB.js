@@ -8,7 +8,7 @@ const db = new Database('../data/data.db', {verbose: console.log });
 const stmt = db.prepare(`SELECT * FROM xrplTokens WHERE id = ?`);
 const info = stmt.get('10');
 
-//console.log(info);
+console.log(info);
 
 
 //var tableXrpl = "xrplTokens";
