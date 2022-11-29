@@ -5,31 +5,41 @@ const Database = require('better-sqlite3');
 
 const db = new Database('../data/data.db', {verbose: console.log });
 
-const stmt = db.prepare(`SELECT currency, issuer FROM xrplTokens`);
+/*
+const stmt = db.prepare(`
+    INSERT INTO xrplTokens (${id}, @currency, @issuer, @name, @logo_file)
+    WHERE NOT EXISTS (SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer)
+    `);
 //const stmt = db.prepare(`SELECT * FROM xrplTokens`);
 //const info = stmt.get('508');
 const info = stmt.all();
 
 console.log(info);
+*/
+
+let id = null;
+const stmt2 = db.prepare(`
+    INSERT INTO xrplTokens (${id}, @currency, @issuer, @name, @logo_file)
+    WHERE NOT EXISTS (SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer)
+    `);
 
 /*
-let id = null;
 const stmt2 = db.prepare(`
     INSERT INTO xrplTokens(${id}, @currency, @issuer, @name, @logo_file)
     SELECT 508, 'JOJO3', 'ryanTAPPWAKA1234cW12Vx97riBu91MDPi',  
     
     `)
+*/
 
 const info = stmt2.run({
-    currency: 'JOJO3',
-    issuer: 'ryanTAPPWAKA1234cW12Vx97riBu91MDPi',
+    currency: 'JOJO4',
+    issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi',
     name: null,
     logo_file: null
 });
 
 console.log(info.changes);
 console.log(info.lastInsertRowid);
-*/
 
 //var tableXrpl = "xrplTokens";
 //var tableCrypto = "crypto"
