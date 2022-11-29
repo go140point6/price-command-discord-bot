@@ -69,7 +69,7 @@ async function updateTokens() {
         `)
 
         const info = checkToken.get({
-            currency: 'JOJO4',
+            currency: 'JOJO5',
             issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi'
         })
 
