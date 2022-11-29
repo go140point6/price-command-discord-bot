@@ -70,13 +70,13 @@ async function updateTokens() {
 
         //console.log(res.data.tokens)
 
-        const updateToken = db.transaction((tokens) => {
+        //const updateToken = db.transaction((tokens) => {
             for (const token of tokens) {
                 sqlCheck.get(token)
                 console.log(token.currency)
                 console.log(token.issuer)
             }
-        })
+        //})
 
         /*
         const info = checkToken.get({
