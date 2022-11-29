@@ -20,6 +20,7 @@ console.log(info);
 let id = null;
 const stmt2 = db.prepare(`
     INSERT INTO xrplTokens (${id}, @currency, @issuer, @name, @logo_file)
+    SELECT @currency, @issuer
     WHERE NOT EXISTS (SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer)
     `);
 
