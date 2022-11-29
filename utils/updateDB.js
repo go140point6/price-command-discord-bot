@@ -17,6 +17,7 @@ const info = stmt.all();
 console.log(info);
 */
 
+/*
 let id = null;
 
 const stmt = db.prepare(`
@@ -36,7 +37,6 @@ const stmt2 = db.prepare(`
     VALUES (${id}, @currency, @issuer, @name, @logo_file)
     `);
 
-/*
 const stmt2 = db.prepare(`
     INSERT INTO xrplTokens(${id}, @currency, @issuer, @name, @logo_file)
     SELECT 508, 'JOJO3', 'ryanTAPPWAKA1234cW12Vx97riBu91MDPi',  
@@ -54,30 +54,30 @@ console.log(info2.changes);
 console.log(info2.lastInsertRowid);
 */
 
-//var tableXrpl = "xrplTokens";
-//var tableCrypto = "crypto"
-//var fieldsXrpl = "(id INTEGER PRIMARY KEY AUTOINCREMENT, currency TEXT, issuer TEXT, name TEXT, logo_file TEXT)";
-//var fieldsCrypto = "(id TEXT PRIMARY KEY, symbol TEXT, name TEXT)";
-//var sqlXrpl = `CREATE TABLE IF NOT EXISTS ${tableXrpl} ${fieldsXrpl}`;
-//var sqlCrypto = `CREATE TABLE IF NOT EXISTS ${tableCrypto} ${fieldsCrypto}`;
-//const createTableXrpl = db.prepare(sqlXrpl);
-//const createTableCrypto = db.prepare(sqlCrypto);
-//createTableXrpl.run();
-//createTableCrypto.run();
+async function UpdateTokens() {
+    await axios.get(`https://api.onthedex.live/public/v1/aggregator`).then(res => {
 
-/*
-async function getTokenInfo() {
-    const getInfo = db.prepare(`
-        SELECT * FROM xrplTokens
-        WHERE (id = 10)
-    `);
+        let id = null
 
-        const info = db.transaction
-        getInfo.run()
+        const checkToken = db.prepare(`
+            SELECT 1 FROM xrplTokens WHERE currency = @currency AND issuer = @issuer
+        `)
+
+        const updateToken = db.prepare(`
+            INSERT INTO xrplTokens (id, currency, issuer, name, logo_file)
+            VALUES (${id}, @currency, @issuer, @name, @logo_file)
+        `)
+
+        const info = checkToken.get({
+            currency: 'JOJO4',
+            issuer: 'ryanTAPPFAKA1234cW12Vx97riBu91MDPi'
+        })
+
+        console.log(info)
+    })
 }
 
-getTokenInfo()
-*/
+updateTokens();
 
 /*
 async function updateTokens() {
