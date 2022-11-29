@@ -70,7 +70,7 @@ async function updateTokens() {
 
         //console.log(res.data.tokens)
 
-        for (const token of tokens) {
+        for (const token of res.data.tokens) {
             const info = checkToken.get({
                 currency: token.currency,
                 issuer: token.issuer
